@@ -1,0 +1,24 @@
+/*main*/
+#main .container { position: relative; margin: 0 auto; }
+#main .container > img { display: inline-block; height: 100%; }
+
+#mylang {color:white;font-size: 18px;float:right;margin-top:26px;margin-right:170px;font-family: "microsoft yahei", Verdana, "u5faeu8f6fu96c5u9ed1", "宋体", Arial;}
+#mylang span{margin-right: 12px;}
+#mylang span a {color:white;}
+#mylang .activate{border-bottom:2px solid #f8b551;}
+/*loginForm*/
+#loginForm { position: absolute; top: 20%; right: 10%; }
+#loginForm > img { margin-right: -10px; margin-top: 50px; position: relative; z-index: 2; }
+#loginForm form{ display: inline-block; width: 372px; background-color: #fff; text-align: center; border: 1px solid #eee; border-radius: 10px; vertical-align: middle; box-shadow: 1px 1px 1px #eee; }
+#loginForm fieldset { border: none; padding: 0; }
+#loginForm legend { padding: 1em; font-size: 24px; line-height: 18px; color: #333; }
+#loginForm img { vertical-align: middle; }
+#loginForm div:not(.btn) { height: 180px; padding: 1em; margin: -2px; background: #3f7fcf; }
+#loginForm div:not(.btn) input:not([type="checkbox"]) { width: 242px; padding: 10px; box-sizing: border-box; font-size: 20px; line-height: 18px; }
+#loginForm div:not(.btn) input:not([type="checkbox"]):focus { outline: 1px solid #f8b551; }
+#loginForm input { vertical-align: middle; }
+#loginForm input:not([type="checkbox"]) { height: 42px; }
+#loginForm .remember { margin: 2em 2em 0; text-align: right; font-size: 14px; line-height: 18px; color: #fff; }
+#loginForm .remember input { width: 16px; height: 16px; }
+#loginForm .btn { padding: 1em; }
+#loginForm .btn input { width: 120px; background-color: #f8b551; border-radius: 10px; border: none; font-size: 24px; line-height: 18px; color: #fff; cursor: pointer; }

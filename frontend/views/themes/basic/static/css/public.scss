@@ -1,0 +1,193 @@
+@charset "utf-8";
+$systemColor : #2b7dbc;
+$color1: #ffb752;
+
+// reset
+body { min-width: 1350px; background-color: #f5f7fa; font-family: "微软雅黑"; color: #333; }
+input[type="text"],input[type="password"],select { width: 180px; height: 30px; padding: 0 4px; border-radius: 4px; border: 2px solid #dcdcdc; }
+select:disabled { background-color: #dcdcdc; }
+em { font-style: normal; }
+table { line-height: 30px; }
+
+// common
+.container { width: 1350px; margin: 0 auto; }
+.box { margin-top: 20px; padding: 20px; background-color: #fff; border: 1px solid #dcdcdc; border-radius: 4px; }
+.pBox { padding: 20px; }
+.color { color: $systemColor; }
+.color1 { color: $color1; }
+
+// checkbox
+.checkbox {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	border: 1px solid #333;
+	background-color: #fff;
+	* {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	input {
+		margin: 0;
+		opacity: 0;
+	}
+	span {
+		display: none;
+		line-height: 20px;
+		text-align: center;
+
+	}
+	.icon-checkmark:before {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// select
+.select {
+	width: 180px;
+	height: 30px;
+	select {
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url(img/arrow.png);
+		background-repeat: no-repeat;
+		background-position: right center;
+		background-color: transparent;
+		padding-right: 14px;
+		&:disabled { background-color: #f0f0f0; }
+	}
+}
+
+// float
+.l { float: left; }
+.r { float: right; }
+.clearfix { *zoom: 1; }
+.clearfix:after { content: ""; display: block; height: 0; clear: both; }
+
+// imgBox
+.imgBox {
+	vertical-align: middle;
+	img {
+		width: 100%;
+	}
+}
+
+// button
+.btn1,.btn2 { padding: 0 20px; line-height: 30px; border: none; border-radius: 4px; font-weight: bolder; color: #fff; }
+.btn1 { background-color: $systemColor; }
+.btn2 { background-color: $color1; }
+
+// input number
+.inputNum {
+	overflow: hidden;
+	span {
+		float: left;
+		padding: 0 8px;
+		line-height: 28px;
+		border: 1px solid #dcdcdc;
+		cursor: pointer;
+		&.disabled {
+			background-color: #f5f5f5;
+			color: #dcdcdc;
+			cursor: default;
+		}
+	}
+	input {
+		float: left;
+		width: 32px;
+		// height: 22px;
+		border-width: 1px;
+		border-radius: 0;
+		text-align: center;
+	}
+}
+
+// header
+#header {
+	background-color: $systemColor;
+	color: #fff;
+	.container { padding: 10px 40px; }
+}
+#logo {
+	h1 { font-size: 24px; }
+	.imgBox { vertical-align: sub; }
+}
+#mainNav {
+	ul { margin: 0; padding: 0; }
+	li { display: inline-block; }
+	a { display: block; padding: 4px 10px; color: #fff; }
+	.active { border-bottom: 2px solid $color1; font-size: 1.2em; }
+}
+
+// main
+.main {
+	padding-bottom: 20px;
+	font-size: 14px;
+	.routeInfo {
+		label { margin-left: 20px; }
+	}
+	.step {
+		margin: 40px 0;
+		text-align: center;
+		ul { display: inline-block; margin: 0; padding: 0; }
+		li {
+			position: relative;
+			display: inline-block;
+			color: $systemColor;
+			+ li { margin-left: 50px; }
+		}
+		.num { position: absolute; left: -24px; bottom: -10px; width: 24px; line-height: 20px; background-color: #fff; border: 2px solid $systemColor; border-radius: 50%; }
+		.title { padding: 10px 20px; border-bottom: 4px solid $systemColor; font-weight: bolder; }
+		.active {
+			color: $color1;
+			.num { border-color: $color1; }
+			.title { border-bottom-color: $color1; }
+		}
+	}
+	.fillForm {
+		width: 70%;
+		h3 {
+			padding: 4px 10px;
+			border-bottom: 2px solid $systemColor;
+		}
+		.formBox { margin-bottom: 20px; }
+	}
+	.orderForm {
+		width: 28%;
+		font-size: 14px;
+		td {
+			min-width: 40px;
+			border: 1px solid #dcdcdc;
+		}
+		tr td:first-child {
+			text-align: left;
+		}
+		.price {
+			color: $color1;
+		}
+		.title {
+			font-weight: bolder;
+		}
+		.totalPrice {
+			padding: 4px 10px;
+			border-bottom: 2px solid $systemColor;
+			font-size: 18px;
+			font-weight: bolder;
+		}
+		.head {
+			padding: 10px 0;
+		}
+		.btnBox {
+			margin-top: 20px;
+			text-align: center;
+			input { width: 100%; cursor: pointer; }
+		}
+	}
+}

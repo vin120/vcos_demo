@@ -1,0 +1,142 @@
+/*航线预定*/
+#reservation .search label { margin-right: 20px; }
+
+/*航线预定——录入模式*/
+#inputMode #entryBox { border: 1px solid #e0e9f4; background-color: #fff; }
+#inputMode #entryBox h2 { margin-bottom: 100px; font-size: 16px; }
+#inputMode #entryBox div { margin-bottom: 138px; text-align: center; }
+#inputMode #entryBox a { display: inline-block; width: 124px; text-align: left; font-weight: bolder; color: #333; }
+#inputMode #entryBox a:first-child { margin-right: 216px; }
+#inputMode #entryBox a span { display: inline-block; margin-top: 20px; }
+
+/*航线预定——录入模式——表格导入*/
+#dataImport #uploadFile { padding: 120px 0; border: 1px solid #e0e9f4; text-align: center; }
+#dataImport #uploadFile label > span:first-child { font-size: 16px; font-weight: bolder; line-height: 40px; }
+#dataImport #uploadBox label { position: relative; }
+#dataImport #uploadBox input { height: 40px; }
+#dataImport #uploadBox input[type="file"] { position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; opacity: 0; }
+#dataImport #uploadBox input[type="text"] { width: 260px; }
+#dataImport .btnBox2 { margin-top: 30px; }
+
+/*航线预定——录入模式——表格导入——数据确认*/
+#dataVerification table, #dataVerification .btnBox2 { margin-top: 30px; }
+#dataVerification .error { background-color: #ffcece; }
+#dataVerification .error td { color: #fe5d5d; }
+
+/*航线预定——录入模式——表格导入——数据确认——订单信息*/
+#orderInformation h2 { margin-top: 20px; font-size: 16px; }
+#orderInformation .infoBox { display: table; width: 100%; background-color: #fff; }
+#orderInformation .infoBox > div { display: table-cell; line-height: 30px; border: 1px solid #e0e9f4; }
+#orderInformation .infoBox ul { margin: 0; padding: 0; }
+#orderInformation .infoBox li span:first-child { display: inline-block; width: 140px; text-align: right; }
+#orderInformation .btnBox2 { margin-top: 30px; }
+
+/*航线预定——录入模式——表格导入——数据确认——订单信息——支付*/
+#payment .infoBox { display: table; width: 100%; background-color: #fff; }
+#payment .infoBox div { display: table-cell; border: 1px solid #e0e9f4; }
+#payment #olineBank label { display: inline-block; margin-right: 20px; margin-bottom: 20px; }
+#payment #olineBank label span { width: 148px; height: 44px; vertical-align: middle; }
+#payment #olineBank label span img { width: 100%; height: 100%; }
+#payment #olineBank .btnBox { text-align: center; }
+
+/*航线预定——录入模式——选择船舱类型和预约数量*/
+#chooseAndReservation .btnBox1 { margin-bottom: 16px; }
+#chooseAndReservation table input[type="text"], #chooseAndReservation table select { width: 100%; height: 34px; border: none; text-align: center; }
+#chooseAndReservation .btnBox2 { margin-top: 30px; }
+
+/*航线预定——录入模式——选择船舱类型和预约数量——添加乘客信息*/
+#addGuestInfo .btnBox1 { margin-bottom: 20px; }
+#addGuestInfo .btnBox2 { margin-top: 30px; }
+#addGuestInfo #addPopups { width: 680px; }
+#addGuestInfo #addPopups label { display: inline-block; margin-bottom: 20px; }
+#addGuestInfo #addPopups label span:first-child { width: 120px; text-align: right; }
+#addGuestInfo #addPopups .more { text-align: center; }
+
+
+#addGuestInfo #deailPopups { width: 680px; }
+#addGuestInfo #deailPopups label { display: inline-block; margin-bottom: 20px; }
+#addGuestInfo #deailPopups label span:first-child { width: 120px; text-align: right; }
+#addGuestInfo #deailPopups label span:last-child { width: 170px; text-align: left; }
+
+/*航线预定——录入模式——选择船舱类型和预约数量——添加乘客信息——附加费和舱房分配*/
+#surchargeAndCabinAssignments h2 { font-size: 16px; }
+#surchargeAndCabinAssignments .mgt { margin-top: 20px; }
+#surchargeAndCabinAssignments .accordion .pBox { padding: 10px; }
+#surchargeAndCabinAssignments .accordion > div { border: 1px solid #e0e9f4; }
+#surchargeAndCabinAssignments .accordion .head { padding: 0 20px; background-color: #e5f2fe; line-height: 40px; }
+#surchargeAndCabinAssignments .accordionBtn a { color: #333; }
+#surchargeAndCabinAssignments .accordionBtn a + a { margin-left: 60px; }
+#surchargeAndCabinAssignments .accordionBtn i { display: inline-block; width: 16px; padding: 1px 0; margin-left: 6px; background-color: #009e96; border-radius: 100%; text-align: center; font: bolder 12px serif; vertical-align: text-top; color: #e5f2fe; transform: rotate(90deg); -webkit-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); -moz-transform: rotate(90deg); }
+#surchargeAndCabinAssignments .accordionBtn .active { color: #f8b551; }
+#surchargeAndCabinAssignments .accordionBtn .active i { background-color: #f8b551; transform: rotate(-90deg); -webkit-transform: rotate(-90deg); -o-transform: rotate(-90deg); -ms-transform: rotate(-90deg); -moz-transform: rotate(-90deg); }
+#surchargeAndCabinAssignments .accordion .body { font-size: 14px; line-height: 20px; }
+#surchargeAndCabinAssignments .accordion .body > div { display: none; }
+#surchargeAndCabinAssignments .accordion .body .active { display: block; }
+#surchargeAndCabinAssignments .accordion .body h3 { font-size: 14px; color: #f8b551; }
+#surchargeAndCabinAssignments .accordion .body em { padding: 0 10px; font-style: normal; font-weight: bolder; }
+#surchargeAndCabinAssignments .accordion .body label { display: inline-block;width: 16%; }
+#surchargeAndCabinAssignments .btnBox2 { margin-top: 30px; }
+#surchargeAndCabinAssignments table select { width: 100%; height: 100%; border: none; }
+
+/*订单中心*/
+#orderCenter .search p { width: 1072px; margin: 0 auto 20px auto; }
+#orderCenter .search label span:first-child { width: 120px; }
+#orderCenter .search .doubleWidth { width: 488px; }
+#orderCenter .search .btnBox2 { margin-bottom: 0; }
+#orderCenter .search{line-height:2em;}
+/* 订单中心 —— 订单详情 */
+#orderPay .infoBox { margin-bottom: 20px; background: #fff; }
+#orderPay .infoBox h2 { line-height: 30px; font-size: 16px; }
+#orderPay .infoBox p { line-height: 20px; font-size: 14px; }
+#orderPay .infoBox ul { margin: 0; padding:0; }
+#orderPay .infoBox li { line-height: 30px; }
+#orderPay .infoBox li span:first-child { display:inline-block; width: 140px; text-align: right; }
+
+/* 退票  —— 订单详情 */
+#retuenTicketInfo .infoBox { margin-bottom: 20px; background: #fff; }
+#retuenTicketInfo .infoBox h2 { line-height: 30px; font-size: 16px; }
+#retuenTicketInfo .infoBox p { line-height: 20px; font-size: 14px; }
+#retuenTicketInfo .infoBox ul { margin: 0; padding:0; }
+#retuenTicketInfo .infoBox li { line-height: 30px; }
+#retuenTicketInfo .infoBox li span:first-child { display:inline-block; width: 140px; text-align: right; }
+
+/*个人中心*/
+#personalCenter h2 { margin-bottom: 10px; font-size: 16px; }
+#personalCenter #info { background-color: #fff; border: 1px solid #e0e9f4; }
+#personalCenter #info ul { margin: 0; padding: 0; }
+#personalCenter #info li span:first-child { display: inline-block; width: 160px; line-height: 30px; text-align: right; }
+#personalCenter #info li span:last-child { color: #666; }
+#personalCenter .btnBox2 { margin-top: 30px; }
+
+#personalCenter #alertpaymentpassword label span:first-child, #personalCenter #alertloginpassword label span:first-child { width: 100px;}
+/* 会员 */
+#memberShip .search .doubleWidth{
+	width:300px;
+}
+#memberShip .search label {
+	margin-right: 20px;
+}
+#memberShip .search .btn1{
+	margin-right: 20px;
+}
+#memberShip table .btn1{
+    margin-right:5px;
+}
+/*剩余舱房*/
+#remainingCabin label { margin-right: 20px; }
+#remainingCabin .doubleWidth { width: 300px; }
+/*改房间名*/
+#changeroom .search .doubleWidth{
+	width:300px;
+}
+#changeroom .search label {
+	margin-right: 20px;
+}
+#changeroom .search .btn1{
+	margin-right: 20px;
+}
+#changeroom table .btn1{
+	width:50px;
+    line-height: 30px;
+    margin-left:5px;
+}

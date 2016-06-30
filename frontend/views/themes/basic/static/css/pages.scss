@@ -1,0 +1,519 @@
+@charset "utf-8";
+$systemColor : #2b7dbc;
+$color1: #ffb752;
+$color2: #e53b48;
+
+// route
+#route {
+	.search label { margin-right: 20px; }
+	.routeList {
+		ul { margin: 0; padding: 0; }
+		li {
+			+ li { margin-top: 10px; }
+		}
+		.imgBox { width: 300px; height: 150px; border-radius: 4px; overflow: hidden; }
+	}
+	.routeInfo {
+		position: relative;
+		width: 1000px;
+		height: 150px;
+		line-height: 1.6em;
+		overflow: hidden;
+		border: 1px solid #dcdcdc;
+		border-radius: 4px;
+		.title {
+			padding-left: 10px;
+			line-height: 30px;
+			h3 {
+				display: inline-block;
+			}
+		}
+		.detailBtn {
+			position: absolute;
+			right: 0;
+			padding: 0 10px;
+			margin-top: 10px;
+			background-color: $systemColor;
+			color: #fff;
+			&:before {
+				position: absolute;
+				left: -20px;
+				content: "";
+				background-color: transparent;
+				border-width: 15px 10px;
+				border-style: solid;
+				border-color: transparent $systemColor $systemColor transparent; 
+			}
+		}
+		.detail {
+			padding: 0 20px;
+			.price {
+				font-size: 20px;
+				font-weight: bolder;
+				color: $color1;
+			}
+		}
+	}
+	.colBox {
+		display: flex;
+		span { flex: 1; }
+	}
+}
+
+// select room
+#selectRoom {
+	.roomType {
+		border: 1px solid #dcdcdc;
+		border-radius: 4px;
+		overflow: hidden;
+		&.fixed {
+			position: fixed;
+			top: 0;
+			z-index: 1;
+			width: 1308px;
+			background-color: #fff;
+		}
+		.title {
+			padding: 0 20px;
+			line-height: 64px;
+			border-right: 1px solid #dcdcdc;
+			background-color: $systemColor;
+			color: #fff;
+			vertical-align: top;
+		}
+		.nextBtn {
+			padding: 0 20px;
+			line-height: 64px;
+			background-color: $color1;
+			color: #fff;
+			&.disabled {
+				background-color: #dcdcdc;
+				cursor: default;
+			}
+		}
+		.info {
+			padding: 10px 20px;
+			line-height: 20px;
+			// background-color: #fff3eb;
+			border-left: 1px solid #dcdcdc;
+			> span {
+				display: block;
+			}
+			> p {
+				line-height: 44px;
+				color: #999;
+			}
+			.price {
+				font-size: 18px;
+				font-weight: bolder;
+				color: $color1;
+			}
+		}
+	}
+	.rooms {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		li { display: inline-block; padding: 0 20px; text-align: center; line-height: 30px; cursor: pointer; }
+		span { display: block; }
+		em { font-size: 20px; font-weight: bolder; color: $systemColor; vertical-align: bottom; }
+		.active em { color: $color1; }
+	}
+	.roomList {
+		margin-top: 20px;
+		padding: 0;
+		h3 { line-height: 40px; }
+		ul { padding: 0; margin: 0; }
+		li {
+			> div:first-child {
+				height: 120px;
+				> div { height: 100%; }
+			}
+			&:not(:last-child) {
+				border-bottom: 1px solid #dcdcdc;
+				.selectRoom {
+					border-bottom: 1px solid #fff;
+				}
+			}
+		}
+		.roomName { font-weight: bolder; font-size: 16px; }
+	}
+	.selectRoom {
+		position: relative;
+		width: 26%;
+		padding: 12px;
+		border-right: 1px solid #dcdcdc;
+		.link {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 120px;
+			font-size: 12px;
+			> div {
+				float: right;
+				width: 32px;
+				padding: 4px;
+				margin-right: 20px;
+			}
+		}
+		.preferential {
+			position: relative;
+			background-color: $color1;
+			a { color: #fff; }
+			div { position: absolute; right: -366px; bottom: -204px; z-index: 1; display: none; width: 400px; height: 200px; border: 2px solid #dcdcdc; border-radius: 4px; background-color: #fff; color: #333; }
+		}
+		.price {
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+			em { font-size: 24px; font-weight: bolder; color: $color1; }
+		}
+		.infoBtn {
+			background-color: $systemColor;
+			a {
+				color: #fff;
+			}
+		}
+		.info {
+			margin-top: 20px;
+			line-height: 30px;
+		}
+	}
+	.selectNum {
+		position: relative;
+		width: 74%;
+		height: 100px;
+		table { width: 80%; line-height: 36px; }
+		em { color: $color2; }
+		.btnBox {
+			width: 20%;
+			height: 100%;
+			line-height: 38px;
+			padding-left: 20px;
+			border-left: 1px solid #dcdcdc;
+			.price em { font-size: 18px; font-weight: bolder; color: $color1; }
+			.point { padding-top: 40px; color: #999; }
+		}
+		.delete {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 4px 10px;
+		}
+	}
+	.roomInfo {
+		display: none;
+		border-top: 1px solid #dcdcdc;
+		table { text-align: left; }
+		th { padding-right: 20px; text-align: right; vertical-align: top; }
+		th,td { min-width: 120px; }
+		.imgList {
+			width: 40%;
+			padding: 20px 0;
+			border-right: 1px solid #dcdcdc;
+			text-align: center;
+			img { width: 80%; }
+		}
+		.info {
+			width: 60%;
+		}
+	}
+	.shadow {
+		display: none;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background-color: #000;
+		opacity: .5;
+	}
+	.loginBox {
+		display: none;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		z-index: 2;
+		padding: 20px;
+		margin-left: -200px;
+		margin-top: -120px;
+		background-color: #fff;
+		border-radius: 4px;
+		box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+		h3 {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		.loginForm {
+			p {
+				position: relative;
+				padding-bottom: 20px;
+			}
+			label span {
+				width: 60px;
+				text-align: right;
+			}
+			a { padding-left: 10px; font-size: 12px; }
+			.wrong {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin-left: 64px;
+				line-height: 20px;
+				font-size: 12px;
+				color: $color2;
+			}
+		}
+		.autoLogin {
+			width: 180px;
+			margin-left: 64px;
+			font-size: 12px;
+			color: #999;
+			.checkbox {
+				width: 14px;
+				height: 14px;
+				border-color: #ccc;
+				span {
+					line-height: 14px;
+				}
+			}
+		}
+		.btnBox {
+			margin-top: 20px;
+			text-align: center;
+			input:first-child {
+				margin-right: 20px;
+			}
+		}
+		.close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 4px 10px;
+			margin-right: -30px;
+			background-color: #dcdcdc;
+			box-shadow: 2px 2px 4px rgba(0,0,0,.5);
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			font-size: 16px;
+			color: #fff;
+		}
+	}
+}
+
+// fill information
+#fillInfo {
+	.fillForm {
+		h2 {
+			display: inline-block;
+			padding: 10px 20px;
+			margin-left: -20px;
+			margin-bottom: 20px;
+			background-color: $systemColor;
+			font-size: 16px;
+			color: #fff;
+		}
+		.selectBox {
+			padding: 10px;
+			i {
+				border: 1px solid $systemColor;
+				margin-right: 10px;
+			}
+		}
+		.selectList {
+			display: none;
+			margin: 0;
+			padding: 20px;
+			// background-color: #dcdcdc;
+			border: 1px solid #dcdcdc;
+			li {
+				display: inline-block;
+				width: 19%;
+			}
+		}
+		.content {
+			p { padding-top: 20px; }
+			a { margin-right: 10px; text-decoration: underline; text-align: center; }
+			input[type="radio"] { vertical-align: middle; }
+			input[type="text"],.select { width: 250px; }
+			.name {
+				width: 10%;
+				text-align: right;
+			}
+			.must:after {
+				content: "*"; color: $color2;
+			}
+			.halfWidth, .input .halfWidth {
+				display: inline-block;
+				width: 122px;
+			}
+			.wrong { font-size: 14px; color: $color2; }
+			.more {
+				display: none;
+				margin-left: 100px;
+				.name {
+					width: 12%;
+				}
+			}
+		}
+		.btnBox {
+			margin-top: 20px;
+		}
+	}
+}
+
+// additional
+#additional {
+	.fillForm {
+		.formBox {
+			> ul {
+				margin: 0;
+				padding: 0;
+				> li {
+					border: 1px solid #dcdcdc;
+				}
+			}
+			table {
+				margin-top: 20px;
+			}
+			td select:disabled {
+				color: $color2;
+			}
+			.title {
+				padding: 10px 0;
+				span { font-weight: bolder; }
+			}
+			.item {
+				padding: 10px;
+				background-color: #dcdcdc;
+				.price {
+					em {
+						color: $color2;
+					}
+				}
+			}
+			.itemBtn {
+				a {
+					margin-right: 20px;
+					&:after {
+						content: "\e900";
+						padding-left: 4px;
+						font-family: 'icomoon';
+					}
+					&.active {
+						&:after {
+							content: "\e901";
+						}
+					}
+				}
+			}
+			.itemContent > div {
+				display: none;
+				padding: 10px;
+			}
+			.traveler {
+				ul {
+					margin: 0;
+					padding: 0;
+
+				}
+				li {
+					display: inline-block;
+					width: 19%;
+				}
+			}
+		}
+	}
+}
+
+// pay
+#pay {
+	.orderInfo {
+		h3 {
+			padding: 4px 10px;
+			border-bottom: 2px solid $systemColor;
+		}
+		table {
+			margin: 20px 0;
+		}
+		th {
+			background-color: #dcdcdc;
+		}
+		.route {
+			padding: 10px;
+		}
+		.costInfo {
+			tr th, tr td {
+				&:first-child {
+					padding-left: 10px;
+					text-align: left;
+				}
+			}
+			.title {
+				background-color: #dcdcdc;
+			}
+			.price {
+				color: $color2;
+			}
+		}
+	}
+	.btnBox { margin-top: 20px; }
+}
+
+// complete
+#complete {
+	.completePrompt {
+		padding: 100px;
+		line-height: 2em;
+		text-align: center;
+		font-size: 20px;
+		img {
+			width: 200px;
+			height: 200px;
+		}
+	}
+}
+
+// signup
+#signup {
+	h2 {
+		padding: 4px 10px;
+		border-bottom: 4px solid $systemColor;
+	}
+	a.btn1, a.btn2 {
+		padding: 4px 10px;
+	}
+	img {
+		width: 20%;
+	}
+	.step {
+		margin: 20px 0 40px;
+		.title {
+			padding: 10px 40px;
+		}
+	}
+	.formBox {
+		width: 50%;
+		margin: 20px auto;
+		p {
+			line-height: 40px;
+			margin-left: 60px;
+		}
+		label span {
+			width: 100px;
+			text-align: right;
+		}
+	}
+	.btnBox {
+		margin-top: 20px;
+		text-align: right;
+	}
+	.completeBox {
+		text-align: center;
+		p {
+			font-size: 16px;
+			font-weight: bolder;
+		}
+	}
+}

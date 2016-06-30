@@ -1,0 +1,1672 @@
+2016-03-14 04:40:58 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 04:40:57 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457926857.8513
+    'REQUEST_TIME' => 1457926857
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+    ]
+    'argc' => 2
+]
+2016-03-14 04:47:05 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(647): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(317): yii\console\controllers\BaseMigrateController->migrateToVersion('m130524_201442')
+#14 [internal function]: yii\console\controllers\BaseMigrateController->actionTo('130524_201442')
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('to', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('to', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/to', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/to', Array)
+#21 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#22 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#23 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(647): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(317): yii\console\controllers\BaseMigrateController->migrateToVersion('m130524_201442')
+#12 [internal function]: yii\console\controllers\BaseMigrateController->actionTo('130524_201442')
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('to', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('to', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/to', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/to', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#21 {main}
+Additional Information:
+
+2016-03-14 04:47:05 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457927225.5968
+    'REQUEST_TIME' => 1457927225
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/to'
+        2 => '130524_201442'
+    ]
+    'argc' => 3
+]
+2016-03-14 04:47:50 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(647): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(317): yii\console\controllers\BaseMigrateController->migrateToVersion('m130524_201442')
+#14 [internal function]: yii\console\controllers\BaseMigrateController->actionTo('130524_201442')
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('to', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('to', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/to', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/to', Array)
+#21 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#22 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#23 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(647): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(317): yii\console\controllers\BaseMigrateController->migrateToVersion('m130524_201442')
+#12 [internal function]: yii\console\controllers\BaseMigrateController->actionTo('130524_201442')
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('to', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('to', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/to', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/to', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#21 {main}
+Additional Information:
+
+2016-03-14 04:47:50 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457927270.9303
+    'REQUEST_TIME' => 1457927270
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/to'
+        2 => '130524_201442'
+    ]
+    'argc' => 3
+]
+2016-03-14 04:48:49 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(647): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(317): yii\console\controllers\BaseMigrateController->migrateToVersion('m130524_201442')
+#14 [internal function]: yii\console\controllers\BaseMigrateController->actionTo('130524_201442')
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('to', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('to', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/to', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/to', Array)
+#21 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#22 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#23 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(647): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(317): yii\console\controllers\BaseMigrateController->migrateToVersion('m130524_201442')
+#12 [internal function]: yii\console\controllers\BaseMigrateController->actionTo('130524_201442')
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('to', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('to', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/to', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/to', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#21 {main}
+Additional Information:
+
+2016-03-14 04:48:49 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457927329.6397
+    'REQUEST_TIME' => 1457927329
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/to'
+        2 => '130524_201442'
+    ]
+    'argc' => 3
+]
+2016-03-14 04:59:31 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 04:59:31 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457927971.8182
+    'REQUEST_TIME' => 1457927971
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+    ]
+    'argc' => 2
+]
+2016-03-14 06:30:09 [-][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Setting unknown property: yii\db\Connection::connectionString' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Component.php:197
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/BaseYii.php(521): yii\base\Component->__set('connectionStrin...', 'mysql:host=192....')
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Object.php(105): yii\BaseYii::configure(Object(yii\db\Connection), Array)
+#2 [internal function]: yii\base\Object->__construct(Array)
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/di/Container.php(374): ReflectionClass->newInstanceArgs(Array)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/di/Container.php(153): yii\di\Container->build('yii\\db\\Connecti...', Array, Array)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\\db\\Connecti...', Array, Array)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/di/Instance.php(152): yii\di\ServiceLocator->get('db')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/di/Instance.php(128): yii\di\Instance->get(NULL)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(106): yii\di\Instance::ensure('db', 'yii\\db\\Connecti...')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(152): yii\console\controllers\MigrateController->beforeAction(Object(yii\base\InlineAction))
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#16 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#17 {main}
+2016-03-14 06:30:09 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933409.6276
+    'REQUEST_TIME' => 1457933409
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+    ]
+    'argc' => 2
+]
+2016-03-14 06:31:09 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [1044] Access denied for user 'phpdb'@'%' to database 'v_sys_db, unix_socket=/applications/mamp/tmp/mysql/mysql.sock'' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [1044] Access denied for user 'phpdb'@'%' to database 'v_sys_db, unix_socket=/applications/mamp/tmp/mysql/mysql.sock'' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:31:09 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933469.425
+    'REQUEST_TIME' => 1457933469
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+    ]
+    'argc' => 2
+]
+2016-03-14 06:32:05 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [1044] Access denied for user 'phpdb'@'%' to database 'v_sys_db,unix_socket=/applications/mamp/tmp/mysql/mysql.sock'' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [1044] Access denied for user 'phpdb'@'%' to database 'v_sys_db,unix_socket=/applications/mamp/tmp/mysql/mysql.sock'' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:32:05 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933525.2117
+    'REQUEST_TIME' => 1457933525
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+    ]
+    'argc' => 2
+]
+2016-03-14 06:32:35 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('up', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('up', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate/up', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate/up', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:32:35 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933555.5768
+    'REQUEST_TIME' => 1457933555
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+    ]
+    'argc' => 2
+]
+2016-03-14 06:34:16 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:34:16 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933656.1481
+    'REQUEST_TIME' => 1457933656
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+        2 => 'console/migrations/m130524_201442_init.php'
+    ]
+    'argc' => 3
+]
+2016-03-14 06:34:24 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:34:23 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933663.9957
+    'REQUEST_TIME' => 1457933663
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+        2 => 'console/migrations/m130524_201442_init.php1'
+    ]
+    'argc' => 3
+]
+2016-03-14 06:34:30 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=192....', 'phpdb', 'pdb2468', NULL)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Connection refused' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:34:30 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457933670.909
+    'REQUEST_TIME' => 1457933670
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+        2 => 'console/migrations/m130524_201442_init.php'
+    ]
+    'argc' => 3
+]
+2016-03-14 06:48:54 [-][-][-][error][yii\db\Exception] exception 'yii\base\ErrorException' with message 'PDO::__construct(): php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema()
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema()
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): yii\console\controllers\BaseMigrateController->actionUp()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): ::call_user_func_array:{/Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php:55}()
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams()
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction()
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction()
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction()
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction()
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest()
+#20 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#21 {main}
+
+Next exception 'PDOException' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(0): PDO->__construct()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:48:50 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457934530.4271
+    'REQUEST_TIME' => 1457934530
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+        2 => 'console/migrations/m130524_201442_init.php'
+    ]
+    'argc' => 3
+]
+2016-03-14 06:51:24 [-][-][-][error][yii\db\Exception] exception 'yii\base\ErrorException' with message 'PDO::__construct(): php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema()
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema()
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): yii\console\controllers\BaseMigrateController->actionUp()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): ::call_user_func_array:{/Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php:55}()
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams()
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction()
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction()
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction()
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction()
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest()
+#20 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#21 {main}
+
+Next exception 'PDOException' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(0): PDO->__construct()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#19 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#20 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(858): yii\db\Connection->open()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Connection.php(845): yii\db\Connection->getMasterPdo()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(834): yii\db\Command->prepare(true)
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(198): yii\db\Command->queryAll()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/mysql/Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/db/Schema.php(146): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/MigrateController.php(132): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(680): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(123): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp('console/migrati...')
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#16 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('migrate', Array)
+#17 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('migrate', Array)
+#18 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2016-03-14 06:51:21 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457934681.2748
+    'REQUEST_TIME' => 1457934681
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+        2 => 'console/migrations/m130524_201442_init.php'
+    ]
+    'argc' => 3
+]
+2016-03-14 07:58:08 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "rabc/init".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('rabc/init', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('rabc/init', Array)
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "rabc/init".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php:169
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('rabc/init', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#3 {main}
+2016-03-14 07:58:08 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457938688.5643
+    'REQUEST_TIME' => 1457938688
+    'argv' => [
+        0 => 'yii'
+        1 => 'rabc/init'
+    ]
+    'argc' => 2
+]
+2016-03-14 08:08:41 [-][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'console\controllers\RbacController' in file: /Users/leijiao/Sites/vcos/console/controllers/RbacController.php. Namespace missing?' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('console\\control...')
+#1 [internal function]: spl_autoload_call('console\\control...')
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(171): class_exists('console\\control...')
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(154): yii\console\controllers\HelpController->validateControllerClass('console\\control...')
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(77): yii\console\controllers\HelpController->getModuleCommands(Object(yii\console\Application))
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(89): yii\console\controllers\HelpController->getCommands()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(184): yii\console\controllers\HelpController->getCommandDescriptions()
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(67): yii\console\controllers\HelpController->getDefaultHelp()
+#8 [internal function]: yii\console\controllers\HelpController->actionIndex(NULL)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('', Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#16 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#17 {main}
+2016-03-14 08:08:41 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => './yii'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => './yii'
+    'SCRIPT_NAME' => './yii'
+    'SCRIPT_FILENAME' => './yii'
+    'PATH_TRANSLATED' => './yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457939321.3133
+    'REQUEST_TIME' => 1457939321
+    'argv' => [
+        0 => './yii'
+    ]
+    'argc' => 1
+]
+2016-03-14 08:09:38 [-][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'The use statement with non-compound name 'Yii' has no effect' in /Users/leijiao/Sites/vcos/console/controllers/RbacController.php:3
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(171): ::spl_autoload_call()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(171): ::class_exists()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(154): yii\console\controllers\HelpController->validateControllerClass()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(77): yii\console\controllers\HelpController->getModuleCommands()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(89): yii\console\controllers\HelpController->getCommands()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(184): yii\console\controllers\HelpController->getCommandDescriptions()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(67): yii\console\controllers\HelpController->getDefaultHelp()
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): yii\console\controllers\HelpController->actionIndex()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): ::call_user_func_array:{/Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php:55}()
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams()
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction()
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction()
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest()
+#15 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#16 {main}
+2016-03-14 08:09:38 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => './yii'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => './yii'
+    'SCRIPT_NAME' => './yii'
+    'SCRIPT_FILENAME' => './yii'
+    'PATH_TRANSLATED' => './yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457939378.8336
+    'REQUEST_TIME' => 1457939378
+    'argv' => [
+        0 => './yii'
+    ]
+    'argc' => 1
+]
+2016-03-14 08:12:16 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "commands".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('commands', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('commands', Array)
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "commands".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php:169
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('commands', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#3 {main}
+2016-03-14 08:12:16 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457939536.8471
+    'REQUEST_TIME' => 1457939536
+    'argv' => [
+        0 => 'yii'
+        1 => 'commands'
+        2 => 'rabc/init'
+    ]
+    'argc' => 3
+]
+2016-03-14 08:12:22 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "commands/rabc/init".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('commands/rabc/i...', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('commands/rabc/i...', Array)
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "commands/rabc/init".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php:169
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('commands/rabc/i...', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#3 {main}
+2016-03-14 08:12:22 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457939542.8267
+    'REQUEST_TIME' => 1457939542
+    'argv' => [
+        0 => 'yii'
+        1 => 'commands/rabc/init'
+    ]
+    'argc' => 2
+]
+2016-03-14 08:12:31 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "commands".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('commands', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('commands', Array)
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "commands".' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php:169
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('commands', Array)
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#3 {main}
+2016-03-14 08:12:31 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457939551.3577
+    'REQUEST_TIME' => 1457939551
+    'argv' => [
+        0 => 'yii'
+        1 => 'commands'
+        2 => 'r=rabc/init'
+    ]
+    'argc' => 3
+]
+2016-03-14 08:15:13 [-][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'The use statement with non-compound name 'Yii' has no effect' in /Users/leijiao/Sites/vcos/console/controllers/RbacController.php:5
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(171): ::spl_autoload_call()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(171): ::class_exists()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(154): yii\console\controllers\HelpController->validateControllerClass()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(77): yii\console\controllers\HelpController->getModuleCommands()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(89): yii\console\controllers\HelpController->getCommands()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(184): yii\console\controllers\HelpController->getCommandDescriptions()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(67): yii\console\controllers\HelpController->getDefaultHelp()
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): yii\console\controllers\HelpController->actionIndex()
+#8 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): ::call_user_func_array:{/Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php:55}()
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams()
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction()
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction()
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction()
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction()
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest()
+#15 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#16 {main}
+2016-03-14 08:15:13 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => './yii'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => './yii'
+    'SCRIPT_NAME' => './yii'
+    'SCRIPT_FILENAME' => './yii'
+    'PATH_TRANSLATED' => './yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457939713.3351
+    'REQUEST_TIME' => 1457939713
+    'argv' => [
+        0 => './yii'
+    ]
+    'argc' => 1
+]
+2016-03-14 08:26:13 [-][-][-][error][yii\base\UnknownClassException] exception 'yii\base\UnknownClassException' with message 'Unable to find 'console\controllers\RbacController' in file: /Users/leijiao/Sites/vcos/console/controllers/RbacController.php. Namespace missing?' in /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/BaseYii.php:291
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('console\\control...')
+#1 [internal function]: spl_autoload_call('console\\control...')
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(171): class_exists('console\\control...')
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(154): yii\console\controllers\HelpController->validateControllerClass('console\\control...')
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(77): yii\console\controllers\HelpController->getModuleCommands(Object(yii\console\Application))
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(89): yii\console\controllers\HelpController->getCommands()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(184): yii\console\controllers\HelpController->getCommandDescriptions()
+#7 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/controllers/HelpController.php(67): yii\console\controllers\HelpController->getDefaultHelp()
+#8 [internal function]: yii\console\controllers\HelpController->actionIndex(NULL)
+#9 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#10 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction('', Array)
+#12 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction('', Array)
+#13 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction('', Array)
+#14 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction('', Array)
+#15 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#16 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#17 {main}
+2016-03-14 08:26:13 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => './yii'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => './yii'
+    'SCRIPT_NAME' => './yii'
+    'SCRIPT_FILENAME' => './yii'
+    'PATH_TRANSLATED' => './yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457940373.7192
+    'REQUEST_TIME' => 1457940373
+    'argv' => [
+        0 => './yii'
+    ]
+    'argc' => 1
+]
+2016-03-14 08:30:09 [-][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function createPermission() on a non-object' in /Users/leijiao/Sites/vcos/console/controllers/RbacController.php:22
+Stack trace:
+#0 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php(55): ::call_user_func_array:{/Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/InlineAction.php:55}()
+#1 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams()
+#2 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Controller.php(108): yii\base\Controller->runAction()
+#3 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Module.php(454): yii\console\Controller->runAction()
+#4 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(167): yii\base\Module->runAction()
+#5 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/console/Application.php(143): yii\console\Application->runAction()
+#6 /Users/leijiao/Sites/vcos/vendor/yiisoft/yii2/base/Application.php(375): yii\console\Application->handleRequest()
+#7 /Users/leijiao/Sites/vcos/yii(27): yii\base\Application->run()
+#8 {main}
+2016-03-14 08:30:09 [-][-][-][info][application] $_SERVER = [
+    'TERM_PROGRAM' => 'Apple_Terminal'
+    'SHELL' => '/bin/bash'
+    'TERM' => 'xterm-256color'
+    'TMPDIR' => '/var/folders/s8/7y6t1pys0z715j3pbpbgqf480000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.zlFcMD2ySB/Render'
+    'TERM_PROGRAM_VERSION' => '361.1'
+    'TERM_SESSION_ID' => '6A5FFBF7-61E7-4F76-BF9A-843CDAC00D81'
+    'USER' => 'leijiao'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.mmfhyj4dk8/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x19:0x34'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    'PWD' => '/Users/leijiao/sites/vcos'
+    'LANG' => 'zh_CN.UTF-8'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/leijiao'
+    'LOGNAME' => 'leijiao'
+    '_' => '/usr/bin/php'
+    'OLDPWD' => '/Users/leijiao/sites'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1457940609.9562
+    'REQUEST_TIME' => 1457940609
+    'argv' => [
+        0 => 'yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]

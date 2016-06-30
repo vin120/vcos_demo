@@ -1,0 +1,21 @@
+thead { background-color: #4bc884; }
+
+#header { background-color: #32b16c; }
+#user { background: #39c77a; border-top-left-radius: 40px; border-bottom-left-radius: 40px;}
+
+#asideNav nav > ul > li { background-color: #32b16c; }
+#asideNav_open > ul > ul { border-right: 2px solid #32b16c; }
+#asideNav_open > ul > ul > li:before { border-color: #32b16c; }
+#asideNav_open ul ul li span { border-color: #32b16c; }
+#asideNav_open .active { color: #32b16c; }
+#asideNav_open .active:after { border-color: transparent #32b16c transparent transparent; }
+#closeAsideNav { color: #32b16c; }
+#closeAsideNav span { border-color: #32b16c; }
+
+.topNav a { color: #3fb676; }
+
+.btn input:first-child { background-color: #32b16c; }
+.btn1 { background-color: #32b16c; }
+
+.pageNum .active { background-color: #32b16c; }
+.pageNum a { border: 1px solid #dee2ed; color: #32b16c; }
