@@ -1,5 +1,5 @@
 /*reset*/
-html,body { margin: 0;padding: 0; font-family: 黑体; height: 100%; }
+html,body { margin: 0; padding: 0; font-family: "黑体"; background-color: #fff; min-width: 1280px; }
 a { text-decoration: none; }
 
 /*common*/
@@ -8,13 +8,19 @@ a { text-decoration: none; }
 .module { display: inline-block; width: 94px; text-align: center; }
 
 /*header*/
-#header { width: 100%; min-width: 1280px; height: 116px; background: url(img/header-bg.jpg) no-repeat; background-size: cover; position: relative; }
-#logo { width: 350px; margin: 38px 0 0 124px; font-size: 28px; color: #fff; }
+#header { width: 100%; height: 116px; background: url(img/header-bg.jpg) no-repeat; background-color: #023c86; position: relative; }
+#logo { width: 350px; margin: 38px 0 0 124px; font-size: 18px; color: #fff; }
 
 /*main*/
-#main { background-color: #fff; height: 84%; min-height: 642px; }
-#main .container { position: relative; width: 90%; min-width: 1236px; height: 100%; }
+#main { width: 100%; min-height: 642px; background-color: #fff; box-sizing: border-box; }
+#main .container { position: relative; width: 98%; min-width: 1239px; height: 100%; margin: 0 auto; }
 
 /*footer*/
 #footer { width: 100%; height: 42px; background-color: #023d88; }
 #footer p { margin: 0; padding: 5px; text-align: right; line-height: 32px; font-size: 16px; color: #fff; }
+
+/*pop-ups*/
+.pop-ups { position: fixed; top: 50%; left: 50%; text-align: center; background-color: #fff; box-shadow: 0 0 10px #000; border-radius: 4px; }
+.pop-ups h3 { line-height: 28px; padding: 10px; margin: 0; background-color: #3f7fcf; color: #fff; }
+.pop-ups h3 .close { display: inline-block; width: 28px; height: 28px; background: url(img/close.png) no-repeat; }
+.shadow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.5; }

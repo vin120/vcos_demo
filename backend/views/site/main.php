@@ -20,12 +20,13 @@ $baseUrl = $this->assetBundles[MainAsset::className()]->baseUrl . '/';
 ?>
 
 <header id="header">
-	<h1 class="l" id="logo"><img src="<?=$baseUrl ?>img/logo.png"><?= \Yii::t('app', '泛网邮轮管理系统');?></h1>
+	<h1 class="l" id="logo"><img src="<?=$baseUrl ?>img/logo.png">  <?= \Yii::t('app', 'Cruise One System');?></h1>
 	<div class="r" id="nav">
 		<div>
 			<a href="#" class='module'>
 				<img src="<?=$baseUrl ?>img/news.png">
-				<?= \Yii::t('app', 'Msg') ?>(<span>5</span>)
+				<?= \Yii::t('app', 'Msg') ?>
+<!--				(<span>5</span>)-->
 			</a>
 			<a href="#" class='module'>
 				<img src="<?=$baseUrl ?>img/set.png">
@@ -49,69 +50,67 @@ $baseUrl = $this->assetBundles[MainAsset::className()]->baseUrl . '/';
 	<div class="container">
 		<div class="page">
 			<div>
-				<a href="#" class='module'>
+				<a href="<?= Url::toRoute('admin/assignment') ?>" target="_blank" class='module'>
 					<img src="<?=$baseUrl ?>img/5.png">
 					<span><?= \Yii::t('app', 'Admin') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="<?= Url::toRoute('voyage/cruise/cruise') ?>" target="_blank" class='module'>
 					<img src="<?=$baseUrl ?>img/13.png">
 					<span><?= \Yii::t('app', 'Voyage') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="<?= Url::toRoute('order/default/index') ?>" target="_blank" class='module'>
 					<img src="<?=$baseUrl ?>img/1.png">
 					<span><?= \Yii::t('app', 'Ticket') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="<?= Url::toRoute('membership/member/index') ?>" target="_blank" class='module'>
 					<img src="<?=$baseUrl ?>img/2.png">
 					<span><?= \Yii::t('app', 'Membership') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="<?= Url::toRoute('travelagent/agent/travel_agent') ?>" target="_blank" class='module'>
 					<img src="<?=$baseUrl ?>img/6.png">
 					<span><?= \Yii::t('app', 'Travelagent') ?></span>
 				</a>
-				<a href="#" class='module'>
-					<img src="<?=$baseUrl ?>img/4.png">
-					<span><?= \Yii::t('app', 'Scheduling') ?></span>
+				<a href="<?= Url::toRoute('org/org/org') ?>" target="_blank" class='module'>
+					<img src="<?=$baseUrl ?>img/14.png">
+					<span><?= \Yii::t('app', 'OrgSet') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/7.png">
 					<span><?= \Yii::t('app', 'Material') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/8.png">
 					<span><?= \Yii::t('app', 'M_Platform') ?></span>
 				</a>
-			</div>
-			<div>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/9.png">
 					<span><?= \Yii::t('app', 'Mall') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/10.png">
 					<span><?= \Yii::t('app', 'Guest Room') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/11.png">
 					<span><?= \Yii::t('app', 'POSSet') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/12.png">
 					<span><?= \Yii::t('app', 'Search') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/3.png">
 					<span><?= \Yii::t('app', 'Baggage') ?></span>
 				</a>
-				<a href="#" class='module'>
-					<img src="<?=$baseUrl ?>img/14.png">
-					<span><?= \Yii::t('app', 'BasicSet') ?></span>
+				<a href="#" class='module disabled'>
+					<img src="<?=$baseUrl ?>img/4.png">
+					<span><?= \Yii::t('app', 'Scheduling') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/15.png">
 					<span><?= \Yii::t('app', 'Report') ?></span>
 				</a>
-				<a href="#" class='module'>
+				<a href="#" class='module disabled'>
 					<img src="<?=$baseUrl ?>img/16.png">
 					<span><?= \Yii::t('app', 'Logs') ?></span>
 				</a>
