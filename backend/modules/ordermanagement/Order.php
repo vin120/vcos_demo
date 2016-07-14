@@ -4,8 +4,6 @@ namespace app\modules\ordermanagement;
 
 use Yii;
 use yii\base\Theme;
-use yii\filters\AccessControl;
-
 class Order extends \yii\base\Module
 {
     public $controllerNamespace = 'app\modules\ordermanagement\controllers';
@@ -20,20 +18,5 @@ class Order extends \yii\base\Module
             'pathMap' => ['@app/modules/ordermanagement/views'=>'@app/modules/ordermanagement/themes/basic'],
             'baseUrl' => '@app/modules/ordermanagement/themes/basic',
         ]);
-    }
-    
-    public function behaviors()
-    {
-    	return [
-    			'access' => [
-    					'class' => AccessControl::className(),
-    					'rules' => [
-    							[
-    									'allow' => true,
-    									'roles' => ['@'],
-    							],
-    					],
-    			]
-    	];
     }
 }

@@ -20,16 +20,67 @@ $(function() {
 	$(".writeLater").on("click",function() {
 		$(this).parents(".content").find(".more").slideUp();
 	});
+	
+	//input文本框获取焦点时取消后方提示信息显示
+	$("form#person_info_form input[type='text']").focus(function(){
+		
+		$(this).parent().parent().find("span.wrong").remove();
+	});
+	
+	
+	//填写护照号后判断护照号是否唯一
+	$("input[type='text'][class='passport_check']").bind("blur",function(){
+		var success = 1;
+		var obj = $(this);
+		var curr_val = $(this).val();
+		var curr_index = parseInt($("input[type='text'][class='passport_check']").index(this));
+		var error_text = '<span class="wrong passport_error" >已存在填写护照号，护照号需唯一</span>';
+		var error_text_pass = '<span class="wrong passport_error" >该乘客已经购买了当前航线,请更换乘客</span>';
+		$("input[type='text'][class='passport_check']").each(function(){
+			var this_index = parseInt($("input[type='text'][class='passport_check']").index(this));
+			var val = $(this).val();
+			if(curr_val==val && curr_index != this_index){
+				obj.parents('p').find('span.wrong').remove();
+				obj.parents('p').append(error_text);
+				success = 0;return false;
+			}
+			
+		});
+		if(success == 0){return false;}else{
+			
+			//验证该乘客是否存在重复购票
+			$.ajax({
+			    url:check_passport_info,
+			    type:'post',
+			    async:false,
+			    data:'voyage_code='+voyage_code+'&passport='+curr_val,
+			 	dataType:'json',
+			 	success:function(data){
+				 	if(parseInt(data)==0){
+				 		obj.parents('p').find('span.wrong').remove();
+						obj.parents('p').append(error_text_pass);
+						success = 0;return false;
+				 	}
+				}
+				
+			});
+		}
+		
+		if(success == 0){return false;}
+		
+		
+	}); 
+	
+	
+	
+	
 });
 
-//input文本框获取焦点时取消后方提示信息显示
-$("form#person_info_form input[type='text']").focus(function(){
-	
-	$(this).parent().parent().find("span.wrong").remove();
-});
+
 
 //验证信息
 function checkpersoninfo(){
+	
 	var success = 0; // 0:失败 1：成功
 	var error_text = '<span class="wrong">必填字段</span>';
 	var error_email_text = '<span class="wrong">填写正确的电子邮箱</span>';
@@ -55,11 +106,12 @@ function checkpersoninfo(){
 	if(!(/^1[3|4|5|7|8]\d{9}$/.test(contact_phone))){
 		$("form#person_info_form input[name='contact_phone']").after(error_phone_text); return 1;
 	}
+	
 	//成人验证
 	$("form#person_info_form .adult_person_div").each(function(){
 		var full_name = $(this).find("input[name='full_name[]']").val();
 		if(full_name==''){
-			$(this).find("input[name='full_name[]']").parent().parent().append(error_text); success =1; return false;
+			$(this).find("input[name='full_name[]']").parents('p').append(error_text); success =1; return false;
 		}
 		var last_name = $(this).find("input[name='last_name[]']").val();
 		var first_name = $(this).find("input[name='first_name[]']").val();
@@ -82,29 +134,31 @@ function checkpersoninfo(){
 			$(this).find("input[name='nationality[]']").parent().parent().append(error_text); success =1; return false;
 		}
 		
-		var is_choose = $(this).find(".adult_choose_type input[type='radio']:checked").val();
-		if(is_choose == 1){
+//		var is_choose = $(this).find(".adult_choose_type input[type='radio']:checked").val();
+//		if(is_choose == 1){
 			//现在填写信息
-			var paper_num =$(this).find("input[name='paper_num[]']").val();
-			if(paper_num == ''){
-				$(this).find("input[name='paper_num[]']").parent().after(error_text); success =1; return false;
-			}
-			var paper_date =$(this).find("input[name='paper_date[]']").val();
-			if(paper_date == ''){
-				$(this).find("input[name='paper_date[]']").parent().after(error_text); success =1; return false;
-			}
-			var birth_place =$(this).find("input[name='birth_place[]']").val();
-			if(birth_place == ''){
-				$(this).find("input[name='birth_place[]']").after(error_text); success =1; return false;
-			}
-			var issue_place =$(this).find("input[name='issue_place[]']").val();
-			if(issue_place == ''){
-				$(this).find("input[name='issue_place[]']").after(error_text); success =1; return false;
-			}
-			
-			
+		var paper_num =$(this).find("input[name='paper_num[]']").val();
+		if(paper_num == ''){
+			$(this).find("input[name='paper_num[]']").parent().parent().append(error_text); success =1; return false;
 		}
+		var paper_date =$(this).find("input[name='paper_date[]']").val();
+		if(paper_date == ''){
+			$(this).find("input[name='paper_date[]']").parent().parent().append(error_text); success =1; return false;
+		}
+		var birth_place =$(this).find("input[name='birth_place[]']").val();
+		if(birth_place == ''){
+			$(this).find("input[name='birth_place[]']").parent().append(error_text); success =1; return false;
+		}
+		var issue_place =$(this).find("input[name='issue_place[]']").val();
+		if(issue_place == ''){
+			$(this).find("input[name='issue_place[]']").parent().append(error_text); success =1; return false;
+		}
+			
+			
+//		}
 	});
+	if(success == 1){return success}
+	
 	//儿童验证
 	$("form#person_info_form .children_person_div").each(function(){
 		var c_full_name = $(this).find("input[name='c_full_name[]']").val();
@@ -131,30 +185,35 @@ function checkpersoninfo(){
 		if(c_nationality == ''){
 			$(this).find("input[name='c_nationality[]']").parent().parent().append(error_text); success =1; return false;
 		}
-		
-		var is_choose = $(this).find(".children_choose_type input[type='radio']:checked").val();
-		if(is_choose == 1){
+//		
+//		var is_choose = $(this).find(".children_choose_type input[type='radio']:checked").val();
+//		if(is_choose == 1){
 			//现在填写信息
-			var c_paper_num =$(this).find("input[name='c_paper_num[]']").val();
-			if(c_paper_num == ''){
-				$(this).find("input[name='c_paper_num[]']").parent().after(error_text); success =1; return false;
-			}
-			var c_paper_date =$(this).find("input[name='c_paper_date[]']").val();
-			if(c_paper_date == ''){
-				$(this).find("input[name='c_paper_date[]']").parent().after(error_text); success =1; return false;
-			}
-			var c_birth_place =$(this).find("input[name='c_birth_place[]']").val();
-			if(c_birth_place == ''){
-				$(this).find("input[name='c_birth_place[]']").after(error_text); success =1; return false;
-			}
-			var c_issue_place =$(this).find("input[name='c_issue_place[]']").val();
-			if(c_issue_place == ''){
-				$(this).find("input[name='c_issue_place[]']").after(error_text); success =1; return false;
-			}
-			
-			
+		var c_paper_num =$(this).find("input[name='c_paper_num[]']").val();
+		if(c_paper_num == ''){
+			$(this).find("input[name='c_paper_num[]']").parent().after(error_text); success =1; return false;
 		}
+		var c_paper_date =$(this).find("input[name='c_paper_date[]']").val();
+		if(c_paper_date == ''){
+			$(this).find("input[name='c_paper_date[]']").parent().after(error_text); success =1; return false;
+		}
+		var c_birth_place =$(this).find("input[name='c_birth_place[]']").val();
+		if(c_birth_place == ''){
+			$(this).find("input[name='c_birth_place[]']").after(error_text); success =1; return false;
+		}
+		var c_issue_place =$(this).find("input[name='c_issue_place[]']").val();
+		if(c_issue_place == ''){
+			$(this).find("input[name='c_issue_place[]']").after(error_text); success =1; return false;
+		}
+			
+			
+//		}
 	});
+	
+	
+	//护照号验证
+	var length = $("span.passport_error").length;
+	if(length > 0){success =1;return false;}
 	
 	return success;
 	
@@ -167,11 +226,21 @@ function savepersoninfo(){
 	if(success == 0){
 		json_data = savecabinspersoninfojson();
 		
+		//保存session
 		$.ajax({
 		    url:save_session_cabins_noperson_info,
 		    type:'post',
 		    async:false,
 		    data:'data_arr='+json_data,
+		 	dataType:'json',
+			
+		});
+		
+		//清除附加费session
+		$.ajax({
+		    url:clear_session_cabins_noperson_info,
+		    type:'post',
+		    async:false,
 		 	dataType:'json',
 			
 		});
@@ -213,21 +282,15 @@ function savecabinspersoninfojson(){
 			var birth = $(this).find("input[name='birth[]']").val();
 			var phone = $(this).find("input[name='phone[]']").val();
 			var nationality = $(this).find("input[name='nationality[]']").val();
-			var choose = parseInt($(this).find("input.choose:checked").val());
 			$num = $num+1;
 			cabins_json += '{"person":"1","key":"'+$num+'","keep_contact":"'+keep_contact+'","full_name":"'+full_name+'","last_name":"'+last_name+'","first_name":"'+first_name+'","sex":"'+sex+'",';
 			cabins_json += '"birth":"'+birth+'","phone":"'+phone+'","nationality":"'+nationality+'"';
-			if(choose == 1){
-				var paper_type = $(this).find("select[name='paper_type[]']").val();
-				var paper_num = $(this).find("input[name='paper_num[]']").val();
-				var paper_date = $(this).find("input[name='paper_date[]']").val();
-				var identity_type = $(this).find("select[name='identity_type[]']").val();
-				var birth_place = $(this).find("input[name='birth_place[]']").val();
-				var issue_place = $(this).find("input[name='issue_place[]']").val();
-				cabins_json += ',"paper_type":"'+paper_type+'","paper_num":"'+paper_num+'","paper_date":"'+paper_date+'","identity_type":"'+identity_type+'","birth_place":"'+birth_place+'","issue_place":"'+issue_place+'"},';
-			}else{
-				cabins_json += '},';
-			}
+			var paper_num = $(this).find("input[name='paper_num[]']").val();
+			var paper_date = $(this).find("input[name='paper_date[]']").val();
+			var birth_place = $(this).find("input[name='birth_place[]']").val();
+			var issue_place = $(this).find("input[name='issue_place[]']").val();
+			cabins_json += ',"paper_num":"'+paper_num+'","paper_date":"'+paper_date+'","birth_place":"'+birth_place+'","issue_place":"'+issue_place+'"},';
+
 		});
 		
 		//循环儿童
@@ -241,21 +304,15 @@ function savecabinspersoninfojson(){
 			var c_birth = $(this).find("input[name='c_birth[]']").val();
 			var c_phone = $(this).find("input[name='c_phone[]']").val();
 			var c_nationality = $(this).find("input[name='c_nationality[]']").val();
-			var c_choose = parseInt($(this).find("input.c_choose:checked").val());
 			$num = $num+1;
 			cabins_json += '{"person":"2","key":"'+$num+'","keep_contact":"'+c_keep_contact+'","full_name":"'+c_full_name+'","last_name":"'+c_last_name+'","first_name":"'+c_first_name+'","sex":"'+c_sex+'",';
 			cabins_json += '"birth":"'+c_birth+'","phone":"'+c_phone+'","nationality":"'+c_nationality+'"';
-			if(c_choose == 1){
-				var c_paper_type = $(this).find("select[name='c_paper_type[]']").val();
-				var c_paper_num = $(this).find("input[name='c_paper_num[]']").val();
-				var c_paper_date = $(this).find("input[name='c_paper_date[]']").val();
-				var c_identity_type = $(this).find("select[name='c_identity_type[]']").val();
-				var c_birth_place = $(this).find("input[name='c_birth_place[]']").val();
-				var c_issue_place = $(this).find("input[name='c_issue_place[]']").val();
-				cabins_json += ',"paper_type":"'+c_paper_type+'","paper_num":"'+c_paper_num+'","paper_date":"'+c_paper_date+'","identity_type":"'+c_identity_type+'","birth_place":"'+c_birth_place+'","issue_place":"'+c_issue_place+'"},';
-			}else{
-				cabins_json += '},';
-			}
+			var c_paper_num = $(this).find("input[name='c_paper_num[]']").val();
+			var c_paper_date = $(this).find("input[name='c_paper_date[]']").val();
+			var c_birth_place = $(this).find("input[name='c_birth_place[]']").val();
+			var c_issue_place = $(this).find("input[name='c_issue_place[]']").val();
+			cabins_json += ',"paper_num":"'+c_paper_num+'","paper_date":"'+c_paper_date+'","birth_place":"'+c_birth_place+'","issue_place":"'+c_issue_place+'"},';
+
 		});
 		
 		cabins_json = cabins_json.substring(0,cabins_json.length-1);

@@ -23,7 +23,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors_()
     {
         return [
             'access' => [
@@ -93,22 +93,38 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+    	//1.首页，2：选择船舱下一步 3.填写信息勾选保存常用旅客
+    	$act = isset($_POST['act'])?$_POST['act']:'1';
     	
-    	//var_dump(123400);exit;
         if (!\Yii::$app->user->isGuest) {
-        	//isGuest 客人身份 
-//             return $this->goHome();	//index
+			if($act == '2'){
+				echo "true";
+			}else if($act == '1'){
+				return $this->goHome();
+			}else if($act == '3'){
+				echo "true";
+			}
         }
-
+		//var_dump(Yii::$app->request->post());exit;
         $model = new LoginForm();
-        var_dump($model->login());exit;
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-        	var_dump('aa');exit;
-            //return $this->goBack();
+        	if($act == '2'){
+        		echo "true";
+        	}else if($act == '1'){
+        		return $this->goHome();
+        	}else if($act == '3'){
+        		echo "true";
+        	}
         } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+        	if($act == '1'){
+	            return $this->render('login', [
+	                'model' => $model,
+	            ]);
+        	}else if($act == '2'){
+        		echo "false";
+        	}else if($act == '3'){
+        		echo "false";
+        	}
         }
     }
 

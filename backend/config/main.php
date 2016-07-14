@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     // 设置目标语言为中文
-    'language' => 'zh-CN',
+    'language' => 'en-US',
     // 设置源语言为英语
     'sourceLanguage' => 'en-US',
     'timeZone'=>'Asia/Chongqing',
@@ -32,22 +32,13 @@ return [
         'order' => [
             'class' => 'app\modules\ordermanagement\Order',
         ],
-        'org' => [
-            'class' => 'app\modules\orgmanagement\Org',
-        ],
         'wifibilling' => [
             'class' => 'app\modules\wifibillingmanagement\Wifibilling',
-        ],
-        'boardingapi' => [
-            'class' => 'app\modules\boardingsystem\Boarding',
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',
             'layout' => 'left-menu',//yii2-admin的导航菜单
-        ],
-        'wifiservice' => [
-            'class' => 'app\modules\wifiservice\Wifiservice',
-        ],
+        ]
     ],
     'components' => [
         'assetManager' => [
@@ -56,16 +47,9 @@ return [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '__admin_identity', 'path' => '/','httpOnly' => true],
-            'idParam' => 'admin',
+            'identityCookie' => ['name' => '__admin_identity', 'httpOnly' => true],
+            'idParam' => '__admin',
             'loginUrl' => ['site/login'],
-        ],
-        'session' => [
-            'name'=>'admin',
-            'cookieParams' => [
-                'path' => '/',
-                'httpOnly' => true,
-            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -100,17 +84,15 @@ return [
             'itemChildTable' => 'auth_item_child',
             'ruleTable' => 'auth_rule'
         ],
-    /*
+
+        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
-//            'enableStrictParsing' => true,//
-            'showScriptName' => true,
+            'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'admin'],
             ],
         ],
         */
-
     ],
 
 //    'as access' => [

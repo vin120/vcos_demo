@@ -376,7 +376,7 @@ class VoyagesetController extends Controller
 		
 		foreach($port as $port_row){
 			foreach ($voyage_port as $key => $value ) {
-				if($port_row['port_code'] == $value['port_code']) {
+				if($port_row['port_code'] === $value['port_code']) {
 					$voyage_port[$key]['port_name'] = $port_row['port_name'];
 				}
 			}
@@ -554,13 +554,16 @@ class VoyagesetController extends Controller
 				->all();
 		
 		
+		
 		foreach($port as $port_row){
 			foreach ($result as $key => $value ) {
-				if($port_row['port_code'] == $value['port_code']) {
+				if($port_row['port_code'] === $value['port_code']) {
 					$result[$key]['port_name'] = $port_row['port_name'];
 				}
 			}
 		}
+		
+	
 
 		if($result){
 			echo json_encode($result);

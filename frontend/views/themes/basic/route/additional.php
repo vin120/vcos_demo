@@ -13,6 +13,9 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 //$baseUrl = Yii::$app->assetManager->publish($assets);
 
 ?>
+<script>
+var save_session_additional = "<?php echo Url::toRoute(['savesessionadditional']);?>";
+</script>
 <div id="additional" class="main">
 	<div class="container box">
 		<div class="route">
@@ -54,10 +57,10 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 						<p class="title"><span>岸上游</span>（票价已含岸上游，以下路线每人只能选择一条）</p>
 						<ul>
 							<?php foreach ($shore as $k=>$sh){?>
-							<li>
+							<li class="shore_li">
 								<div class="item">
 									<span class="checkbox"><span class="icon-checkmark"></span><input type="checkbox" name=""></span>
-									<span id="<?php echo $sh['se_code']?>" ><?php echo $sh['se_name']?></span>
+									<span class="shore_info" price="<?php echo $sh['price']?>" id="<?php echo $sh['id']?>" ><?php echo $sh['se_name']?></span>
 									<span class="itemBtn r">
 										<a href="#" class="color checkDetail">查看详情</a>
 										<a href="#" class="color selectDetail">选择乘客</a>
@@ -99,10 +102,10 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 						<p class="title"><span>岸上游</span>（票价已含岸上游，以下路线每人只能选择一条）</p>
 						<ul>
 							<?php foreach ($surcharge as $k=>$su){?>
-							<li>
+							<li class="surcharge_li">
 								<div class="item">
 									<span class="checkbox"><span class="icon-checkmark"></span><input type="checkbox" name=""></span>
-									<span  id="<?php echo $su['cost_id']?>" ><?php echo $su['cost_name']?></span>
+									<span class="surcharge_info" price="<?php echo $su['cost_price']?>" id="<?php echo $su['id']?>" ><?php echo $su['cost_name']?></span>
 									<span class="price">[<em>￥<?php echo $su['cost_price']?></em>/人]</span>
 									<span class="itemBtn r">
 										<a href="#" class="color checkDetail">查看详情</a>
@@ -158,15 +161,15 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 										$one_num = ($cabins_room_num[$code]>1)?4:(count($cabin_per));
 										$two_num = ($cabins_room_num[$code]>1)?0:(4-((int)count($cabin_per)));
 									?>
-								<tr cabin_type="<?php echo $code;?>">
+								<tr cabin_type="<?php echo $code;?>" live_num="<?php echo $cabins_type_live_num[$code]?>">
 									<td><?php echo $cabins_type_name[$code]?></td>
 									<?php for ($i=0;$i<$one_num;$i++){?>
 										<td>
 											<span class="select">
-												<select name="cabin_per[]">
+												<select name="cabin_per[]" old_selected="">
 													<option value="">请选择</option>
 												<?php foreach ($cabin_per as $per){?>
-													<option value="<?php echo $per['key']?>"><?php echo $per['full_name']?></option>
+													<option person_type="<?php echo $per['person']?>" value="<?php echo $per['key']?>"><?php echo $per['full_name']?></option>
 												<?php }?>
 												</select>
 											</span>
@@ -189,7 +192,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 					</div>
 					<div class="btnBox clearfix">
 						<a href="<?php echo Url::toRoute(['fillinfo']).'&voyage_code='.$voyage_result['voyage_code'];?>" class="btn1 l">上一步</a>
-						<a href="<?php echo Url::toRoute(['pay']).'&voyage_code='.$voyage_result['voyage_code'];?>" onclick="return saveaddition()" class="btn2 r">下一步></a>
+						<a href="<?php echo Url::toRoute(['saveorder']).'&voyage_code='.$voyage_result['voyage_code'];?>" onclick="return saveaddition()" class="btn2 r">下一步></a>
 					</div>
 				</div>
 				<div class="orderForm r box">
@@ -202,7 +205,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 					</div>
 					<div class="base">
 						<div class="head">
-							<span class="title">舱房及包含产品</span>
+							<span class="title">舱房</span>
 							<span class="price r">￥<?php echo $count_price;?></span>
 						</div>
 						<table>
@@ -213,7 +216,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 								<td>￥<?php echo $v['price']?></td>
 							</tr>
 							<?php }?>
-							<tr>
+							<!-- <tr>
 								<td>儿童优惠<em>减</em></td>
 								<td>1份</td>
 								<td>-￥4799</td>
@@ -222,29 +225,21 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 								<td>日本免签船舶观光上陆许可证（适用邮轮，上海送签）</td>
 								<td>3份</td>
 								<td>已含</td>
-							</tr>
+							</tr> -->
 						</table>
 					</div>
 					<div class="add">
-						<div class="head">
-							<span class="title">附加产品</span>
+						<div class="head" style="display: none;">
+							<span class="title">包含产品及附加产品</span>
 							<span class="price r">￥405</span>
 						</div>
 						<table>
-							<tr>
-								<td>平安携程境外邮轮短线保险 经典型</td>
-								<td>3份</td>
-								<td>￥390</td>
-							</tr>
-							<tr>
-								<td>配送费</td>
-								<td></td>
-								<td>￥15</td>
-							</tr>
+							<thead></thead>
+							<tbody></tbody>
 						</table>
 					</div>
 					<div class="btnBox">
-						<a href="<?php echo Url::toRoute(['pay']).'&voyage_code='.$voyage_result['voyage_code'];?>"  onclick="return saveaddition()"><input type="button" value="保存订单" class="btn2"></a>
+						<a href="<?php echo Url::toRoute(['saveorder']).'&voyage_code='.$voyage_result['voyage_code'];?>"  onclick="return saveaddition()"><input type="button" value="保存订单" class="btn2"></a>
 					</div>
 				</div>
 			</div>

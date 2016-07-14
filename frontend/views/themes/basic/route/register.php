@@ -21,7 +21,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 	<div class="container box">
 		<h2>会员注册</h2>
 		<div class="box formBox">
-			<div class="step">
+			<!-- <div class="step">
 				<ul>
 					<li class="active">
 						<span class="num">1</span>
@@ -36,7 +36,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 						<span class="title">注册成功</span>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 			<p>
 				<label>
 					<span>手机号：</span>
@@ -53,7 +53,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 			<p>
 				<label>
 					<span>密码：</span>
-					<input type="password" name="password" id="password" placeholder="8-20位字母、数字和符号">
+					<input type="password" name="password" id="password" placeholder="6-20位字母、数字和符号">
 				</label>
 			</p>
 			<p>
@@ -62,15 +62,15 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 					<input type="password" name="s_password" id="s_password" placeholder="再次输入密码">
 				</label>
 			</p>
-			<p>
+			<!-- <p>
 				<label>
 					<span>验证码：</span>
 					<input type="text" name="verification_code" placeholder="输入验证码">
-					<a href="<?php echo Url::toRoute(['sendmail']);?>"><input type="button" name="get_ver_code" id="get_ver_code" value="点击获取邮箱验证码" /></a>
+					<input type="button" name="get_ver_code" id="get_ver_code" value="点击获取邮箱验证码" />
 				</label>
-			</p>
+			</p> -->
 			<div class="btnBox">
-				<input type="button" style="background:#ccc" id="next_but" value="下一步，验证" class="btn2 disabled">
+				<input type="button" style="" onclick="next_but()" value="注册" class="btn2">
 			</div>
 		</div>
 		
@@ -141,8 +141,8 @@ window.onload = function(){
 			$(this).after('<span class="error_text">填写密码</span>');success=0;return false;
 		}
 		var length = password.length;
-		if(length>20 || length <8){
-			$(this).after('<span class="error_text">密码长度为8-20个字符</span>');success=0;return false;
+		if(length>20 || length <6){
+			$(this).after('<span class="error_text">密码长度为6-20个字符</span>');success=0;return false;
 		}
 	});
 	$("form input[name='s_password']").blur(function(){
@@ -157,7 +157,8 @@ window.onload = function(){
 	});
 
 	//获取验证码
-	$(".form input[name='get_ver_code']").on('click',function(){
+	$(".form input[type='button'][name='get_ver_code']").on('click',function(){
+		
 		$.ajax({
 		    url:"<?php echo Url::toRoute(['sendmail']);?>",
 		    type:'post',
@@ -171,11 +172,60 @@ window.onload = function(){
 		});
 	});
 	
-	
-	
-	$("#next_but").on("click",function(){
-		
+}
 
-	});
+function next_but(){
+	var success = 0;
+	var phone = $.trim($("form input[name='phone']").val());
+	var email = $.trim($("form input[name='email']").val());
+	var password = $.trim($("form input[name='password']").val());
+	var s_password = $.trim($("form input[name='s_password']").val());
+	if(phone == ''){
+		$("form input[name='phone']").parent().find("span.error_text").remove();
+		$("form input[name='phone']").after('<span class="error_text">必填字段</span>');
+		success = 1;return false;
+	}
+	if(email == ''){
+		$("form input[name='email']").parent().find("span.error_text").remove();
+		$("form input[name='email']").after('<span class="error_text">必填字段</span>');
+		success = 1;return false;
+	}
+	if(password == ''){
+		$("form input[name='password']").parent().find("span.error_text").remove();
+		$("form input[name='password']").after('<span class="error_text">必填字段</span>');
+		success = 1;return false;
+	}
+	if(s_password == ''){
+		$("form input[name='s_password']").parent().find("span.error_text").remove();
+		$("form input[name='s_password']").after('<span class="error_text">必填字段</span>');
+		success = 1;return false;
+	}
+	var length = $("form").find("span.error_text").length;
+	if(success == 1){return false;}
+	if(length >0){return false;}
+	if(success == 0 && length == 0){
+
+		$.ajax({
+		    url:"<?php echo Url::toRoute(['route/saveregister']);?>",
+		    type:'post',
+		    async:false,
+		    data:'phone='+phone+'&email='+email+'&password='+password,
+		 	dataType:'json',
+		 	success:function(data){
+			 	if(data!=0){
+				 	alert("注册成功!");
+				 	location.href="<?php echo Url::toRoute(['/site/login']);?>";
+				 	
+				}else{
+					alert("注册失败!");
+				}
+		 		
+			}
+			
+		});
+		
+	}
+	
+	
 }
 </script>

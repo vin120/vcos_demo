@@ -142,7 +142,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 			return_room_price = return_room_price.substring(0,return_room_price.length-1);
 			//alert(room_ids);alert(return_room_price);return false;
 			$.ajax({
-		        url:"<?php echo Url::toRoute(['returnroom_save']);?>",
+		        url:"<?php echo Url::toRoute(['returnroomsave']);?>",
 		        type:'post',
 		        async:false,
 		        data:'voyage_code='+voyage_code+'&order_num='+order_num+'&cabin_type='+cabin_type+'&cabin_name='+cabin_name+'&return_room_price='+return_room_price+'&desc='+desc,
@@ -150,7 +150,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 		    	success:function(data){
 		    		if(data != 0){
 						alert("Refund success ");
-						location.href = "<?php echo Url::toRoute(['free_order'])?>";
+						location.href = "<?php echo Url::toRoute(['agentorder'])?>";
 		    		}else{
 		    			alert("Refund failure  ");
 			    	}
@@ -161,7 +161,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 		});
 
 		$("#previous_but").on('click',function(){
-			location.href = "<?php echo Url::toRoute(['free_order_detail','order_serial_number'=>$order_result['order_serial_number']])?>";
+			location.href = "<?php echo Url::toRoute(['agentorderdetail','order_serial_number'=>$order_result['order_serial_number']])?>";
 		});
 	}
 </script>

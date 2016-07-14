@@ -33,8 +33,8 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
             <img src="<?=$baseUrl ?>images/user_img.png">
         </div>
         <div class="r">
-            <span><?= Yii::$app->user->identity->username;?></span>
-                    <a href="javascript:window.opener=null;window.open('','_self');window.close();"><?= \Yii::t('app', 'Exit') ?></a>
+            <span>admin</span>
+            <a href="#">Exit</a>
         </div>
     </div>
 </header>

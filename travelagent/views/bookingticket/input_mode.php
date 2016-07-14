@@ -24,7 +24,7 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 					<img src="<?=$baseUrl ?>images/excel.png">
 					<span><?php echo yii::t('app','Excel Import')?></span>
 				</a>
-				<a onclick="return clean_session()" href="<?php echo Url::toRoute(['adduestinfo','code'=>$code])?>">
+				<a href="<?php echo Url::toRoute(['adduestinfo','code'=>$code])?>">
 					<img src="<?=$baseUrl ?>images/entry.png">
 					<span><?php echo yii::t('app','Manual Entry')?></span>
 				</a>
@@ -35,11 +35,7 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 <!-- main content end -->
 
 <script type="text/javascript">
-function clean_session(){
-	//清除session
-	$.session.clear();
-	return true;
-}
+
 </script>
 
 

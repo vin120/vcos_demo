@@ -5,6 +5,7 @@ $this->title = 'Agent Ticketing';
 use travelagent\views\myasset\PublicAsset;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use travelagent\components\Helper;
 
 PublicAsset::register($this);
 $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
@@ -184,105 +185,58 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 		</table>
 		<div class="btnBox2">
 			<a href="javascript:history.go(-1)"><input type="button" value="PREVIOUS" class="btn2"></input></a>
-			<input type="button" id="surcharge_next_but" value="NEXT" class="btn1"></input>
+			<a href="<?php echo Url::toRoute(['ordersave','voyage_code'=>$code])?>" onclick="return savejson()"><input type="button" id="surcharge_next_but" value="NEXT" class="btn1"></input></a>
 		</div>
 	</div>
 </div>
 <!-- main content end -->
 <script type="text/javascript">
 window.onload = function(){
-	var user_arr = new Array();
-	var data = $.session.get('membership');
-	//alert(data);
-	var str = '';	//	存放其他
-	var curr_str = ''; //存放当前
-	var option_user = '';		//option存放乘客
-	
-	//人数
-	if(data != undefined){
-		data = data.replace(/\+/g," "); 
-		data_ex = data.split('-');
-		$.each(data_ex,function(e){
-			if(data_ex[e]!=''){
-				var val = data_ex[e].split('&');
-				var u_passport = '';
-				var u_full_name = ''
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-					if(name == 'passport'){u_passport=val;}
-					if(name == 'full_name'){u_full_name=val;}
-			      	 
-				});
-				//护照号-人名
-				user_arr.push(u_passport+'-'+u_full_name);
-			}
-			
-		});
-	
-		var data_str = '';
-		$.each(user_arr,function(k){
-			var d_val = user_arr[k].split("-");
-			data_str += "<label>";
-			data_str += '<input type="checkbox" value="'+d_val[0]+'"></input>';
-			data_str += '<span>'+d_val[1]+'</span>';
-			data_str += '</label>';
+	var person_str = '';
+	var option_user = '';
+	<?php if(!empty($person_info)) {
+	foreach ($person_info as $row){?>
+		person_str += "<label>";
+		person_str += '<input type="checkbox" value="<?php echo $row['passport']?>"></input>';
+		person_str += "<span><?php echo $row['full_name'] ?></span>";
+		person_str += '</label>';
+		<?php $birth = Helper::GetCreateTime($row['birth']); $age = Helper::Getage($birth);?>
+		option_user += "<option age='<?php echo $age;?>' value='<?php echo $row['passport']?>'><?php echo $row['full_name'] ?></option>";
+	<?php }}?>
 
-
-			option_user += "<option value='"+d_val[0]+"'>"+d_val[1]+"</option>";
-	
-		});
-	
-		$(".shore_div").html(data_str);
-		$(".insurance_div").html(data_str);
-
-		
-	}
+	$(".shore_div").html(person_str);
+	$(".insurance_div").html(person_str);
 
 	//房间
-	var room_data = $.session.get("room_<?php echo $code;?>");
-	if(room_data != undefined){
-		var str = '';
-		var room_only = room_data.split("&");
-		var number = 1;
-		$.each(room_only,function(k){
-			var split = room_only[k].split("=");
-			var name = split[0].split("/");
-			var val = split[1].split("/");
-			var td_num = 4-parseInt(val[0]);
-
-			//判断当前类型选择了多少个房间，循环几次
-			for(var e=0;e<parseInt(val[1]);e++){
-				str += '<tr>';
-				str += '<td class="readOnly">'+number+'</td>';
-				str += '<td class="readOnly" cabin_code="'+name[0]+'">'+name[1]+'</td>';
-				//判断该房间住几人
-				for(var i=0;i<val[0];i++){
-					str += '<td>';
-					str += '<select>';
-					str += '<option value="0">Please Select</option>';
-					str += option_user;
-					str += '</select>';
-					str += '</td>';
-				}
-				for(var j=0;j<td_num;j++){
-					str += '<td class="readOnly point">Null</td>';
-				}
-				str += '</tr>';
-				++number; 
-			}
-
-		});
-
-		//alert(str);
-		$("table#room_div tbody").append(str);
-		
-	}
+	var room_str = '';
+	<?php if(!empty($cabins_info)){
+		$number = 1;
+		foreach ($cabins_info as $row){
+		//判断该类型选择了多少个房间
+		$live_num = $row['check_num'];
+		$min_live = $row['min_live'];
+		$empty_bed = 4-(int)$row['check_num'];
+		for($n=0;$n<(int)$row['room_num'];$n++){
+	?>
+		room_str += '<tr>';
+		room_str += '<td class="readOnly"><?php echo $number;?></td>';
+		room_str += '<td class="readOnly" min_live="<?php echo $row['min_live']?>" cabin_code="<?php echo $row['type']?>"><?php echo $row['type_text']?></td>';
+	//判断该房间住几人
+	<?php for($i=0;$i<(int)$live_num;$i++){?>
+		room_str += '<td>';
+		room_str += '<select>';
+		room_str += '<option value="0">Please Select</option>';
+		room_str += option_user;
+		room_str += '</select>';
+		room_str += '</td>';
+	<?php }?>
+	<?php for($j=0;$j<(int)$empty_bed;$j++){?>
+		room_str += '<td class="readOnly point">Null</td>';
+	<?php }?>
+		room_str += '</tr>';
 	
-
-	//alert(room_data);
-
+	<?php ++$number;}}}?>
+	$("table#room_div tbody").append(room_str);
 
 //------------------------------------------------------------------------------------------------
 
@@ -351,172 +305,125 @@ window.onload = function(){
 		
 	});
 
-
-
+}
 //数据保存下一步提交------------------------------------------------------
-	//下一步判断，完好则保存如库下单
-	$("#surcharge_next_but").on('click',function(){
-		//获取session中人数
-		var data_total = data.split('-');
-		var num = 0;
-		$.each(data_total,function(k){
-			if(data_total[k]!=''){
-				++num;
-				}
-		});
-		var shore_str = '';
-		var sh_num = 0;
-
-		
-		//拼接会员
-		var last_name =  new Array();
-		var first_name = new Array();
-		var full_name = new Array();
-		var passport = new Array();
-		var gender = new Array();
-		var nationalify = new Array();
-		var email = new Array();
-		var phone = new Array();
-		var birth = new Array();
-		var birth_place = new Array();
-		var issue = new Array();
-		var expiry = new Array();
-		
-		var data_str = data.split("-");
-		$.each(data_str,function(e){
-			if(data_str[e]!=''){
-				var da_str = data_str[e].split('&');
-				$.each(da_str,function(l){
-					var d_str = da_str[l].split('=');
-					var name = d_str[0];
-					var val = d_str[1];
-
-					if(name == 'last_name'){last_name.push(val);}
-					if(name == 'first_name'){first_name.push(val);}
-					if(name == 'full_name'){full_name.push(val);}
-					if(name == 'passport'){passport.push(val);}
-					if(name == 'gender'){gender.push(val);}
-					if(name == 'nationalify'){nationalify.push(val);}
-					if(name == 'email'){email.push(val);}
-					if(name == 'phone'){phone.push(val);}
-					if(name == 'birth'){birth.push(val);}
-					if(name == 'birth_place'){birth_place.push(val);}
-					if(name == 'issue'){issue.push(val);}
-					if(name == 'expiry'){expiry.push(val);}
-					
-				});
-				
-			}
-		});
-		
-		var membership_data = 'last_name='+last_name+'&first_name='+first_name+'&full_name='+full_name+'&passport='+passport;
-		membership_data += '&gender='+gender+'&nationalify='+nationalify+'&email='+email+'&phone='+phone;
-		membership_data += '&birth='+birth+'&birth_place='+birth_place+'&issue='+issue+'&expiry='+expiry;
-		
-		
-		//拼接观光路线
-		$(".shore_div").each(function(){
-			var sh_id = $(this).attr('sh_id');
-			var sh_str = sh_id+':';
-			$(".shore_div[sh_id='"+sh_id+"']").find("input[type='checkbox']:checked").each(function(){
-				sh_str += $(this).val()+',';
-				++sh_num;
-			});		
-			sh_str=sh_str.substring(0,sh_str.length-1);
-			shore_str += sh_str+'/';
-		});
-		
-		//alert(sh_num);alert(num);
-		if(sh_num<num){Alert("Existing members do not specify a sightseeing route");return false;}
-		//alert(shore_str);
-		shore_str=shore_str.substring(0,shore_str.length-1);
-		
-		//拼接保险
-		var user_passport = new Array();
-		$(".insurance_div").eq(0).find("input[type='checkbox']").each(function(){
-			user_passport.push($(this).val());
-		});
-		var insurance_str = '';
-		$.each(user_passport,function(e){
-			var in_str = user_passport[e]+':';
-			
-			$(".insurance_div").find("input[type='checkbox'][value='"+user_passport[e]+"']:checked").each(function(){
-				in_str += $(this).parent().parent().attr('in_id')+',';
-			});
-			
-			in_str=in_str.substring(0,in_str.length-1);
-			insurance_str += in_str+'/';
-			
-		});
-		insurance_str=insurance_str.substring(0,insurance_str.length-1);
-		//alert(passport_str);
-		
-		
-		
-		//拼接房间
-		var ca_num = 0;
-		var cabin_str = '';
-		
-		$("table#room_div tbody tr").each(function(){
-			var cabin_code = $(this).find("td").eq(1).attr('cabin_code');
-			var is_exist = 0;
-			var ca_str = cabin_code+':';
-			
-			$(this).find("select").each(function(){
-				var val = $(this).find("option:selected").val();
-				if(val!=0){
-					ca_str += val+',';
-					++ca_num;
-				}
-			});
-			
-				ca_str=ca_str.substring(0,ca_str.length-1);
-				cabin_str += ca_str+'/';
-			
-		});
-
-		//alert(ca_num);alert(num);
-		if(ca_num<num){Alert("Existing members does not specify the ship type");return false;}
-		//alert(cabin_str);
-		cabin_str=cabin_str.substring(0,cabin_str.length-1);
-
-		
-
-		//membership+shore_excursion+Insurance+room
-		var post_data = membership_data+'&shore_excursion='+shore_str+'&insurance='+insurance_str+'&room='+cabin_str+'&voyage_code='+<?php echo $code;?>;
-
-
-		
-		$.ajax({
-	        url:"<?php echo Url::toRoute(['ordersave']);?>",
-	        type:'post',
-	        async:false,
-	        data:post_data,
-	     	dataType:'json',
-	    	success:function(data){
-	    		if(data != 0){
-	    			if(data !== 0){
-		    			//提交数据成功
-		    			var order_number = data;
-	    				Alert("Save success ");
-	    				//清除session
-	    				//$.session.clear();
-	    				location.href="<?php echo Url::toRoute(['orderinformation'])?>&order_number="+order_number;
-		    		}else{
-			    		//提交数据失败
-			    		Alert("Save failed");
-			    	}
-	    		}
-	        		
-	    	}      
-	    });
-		
+//下一步判断，完好则保存入库下单
+function savejson(){
+	var person_total = "<?php echo count($person_info)?>";
 	
+	//拼接观光路线
+	var shore_josn = '{"shore":[';
+	var sh_num = 0;
+	var shore_data = '';
+	$(".shore_div").each(function(){
+		var sh_id = $(this).attr('sh_id');
+		var shore_str = '{"type":"'+sh_id+'","person_key":[';
+		var sh_str = '';
+		$(".shore_div[sh_id='"+sh_id+"']").find("input[type='checkbox']:checked").each(function(){
+			sh_str += '"'+$(this).val()+'",';
+			++sh_num;
+		});	
+		if(sh_str!=''){	
+			sh_str=sh_str.substring(0,sh_str.length-1);
+			shore_str = shore_str+sh_str+']},';
+			shore_data += shore_str;
+		}
+		
+	});
+	if(shore_data!=''){shore_data=shore_data.substring(0,shore_data.length-1);}
+	
+	shore_josn = shore_josn+shore_data+']},';
+	if(sh_num<person_total){Alert("Existing members do not specify a sightseeing route");return false;}
+
+	
+
+	//拼接附加费
+	var insurance_json = '{"insurance":[';
+	var insurance_data = '';
+	$(".insurance_div").each(function(){
+		var in_id = $(this).attr('in_id');
+		var insurance_str = '{"type":"'+in_id+'","person_key":[';
+		var in_str = '';
+		$(".insurance_div[in_id='"+in_id+"']").find("input[type='checkbox']:checked").each(function(){
+			in_str += '"'+$(this).val()+'",';
+		});	
+		if(in_str!=''){	
+			in_str=in_str.substring(0,in_str.length-1);
+			insurance_str = insurance_str+in_str+']},';
+			insurance_data += insurance_str;
+		}
+		
+	});
+	if(insurance_data!=''){insurance_data=insurance_data.substring(0,insurance_data.length-1);}
+	insurance_json = insurance_json+insurance_data+']},';
+
+
+	//验证房间，(1.判断最少入住成人数。2.判断是否存在空房)
+	//拼接房间
+	var success = 1;
+	var ca_num = 0;
+	var adult_num = 0;
+	var cabins_json = '{"cabins":[';
+	var cabins_data_all = '';
+	var cruise_child_age = "<?php echo Yii::$app->params['children_age']?>";
+
+	$("table#room_div tbody tr").each(function(){
+		var cabin_type_name = $(this).find("td").eq(1).html();
+		var cabin_code = $(this).find("td").eq(1).attr('cabin_code');
+		var min_live = $(this).find("td").eq(1).attr('min_live');
+		var cabin_str = '{"type":"'+cabin_code+'","pereson":[';
+		var cabin_data = '';
+		var cabin_number = 0;
+		$(this).find("select").each(function(){
+			var val = $(this).find("option:selected").val();
+			if(val!=0){
+				var age = $(this).find("option:selected").attr('age');
+				if(parseInt(age) > parseInt(cruise_child_age)){
+					++adult_num;
+				}
+				cabin_data += '"'+val+'",';
+				++ca_num;
+				++cabin_number;
+			}else{
+				cabin_data += '"",';
+			}
+			
+		});
+		if(cabin_number == 0){
+			Alert("Can't existence empty cabins ");
+			success = 0;return false;
+		}
+		if(adult_num<min_live){
+			Alert(cabin_type_name+"type cabin check-in at least "+min_live+" adults");
+			success = 0;return false;
+		}
+		if(cabin_number != 0){
+			cabin_data=cabin_data.substring(0,cabin_data.length-1);
+			cabin_str = cabin_str + cabin_data+']},';
+			cabins_data_all += cabin_str;
+		}
 	});
 
+	if(success == 0){return false;}
+	if(ca_num<person_total){Alert("Existing members does not specify the ship type");return false;}
 	
-	
+	if(cabins_data_all!=''){
+		cabins_data_all=cabins_data_all.substring(0,cabins_data_all.length-1);
+	}
+	cabins_json = cabins_json + cabins_data_all+ ']}';
 
+	var additional_json = '[{"additional_json":['+shore_josn+insurance_json+cabins_json+']}]';
+
+	//保存session
+	$.ajax({
+        url:"<?php echo Url::toRoute(['savesessionadditional']);?>",
+        type:'post',
+        async:false,
+        data:'additional_json='+additional_json,
+     	dataType:'json',
+	});
+
+	return true;
 	
 }
 </script>

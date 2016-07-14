@@ -48,17 +48,21 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 				</tr>
 			</thead>
 			<tbody>
-				<!-- <tr>
-					<td><input type="checkbox"></input></td>
-					<td>ZHAN</td>
-					<td>SAN</td>
-					<td>Male</td>
-					<td>30/01/1990</td>
-					<td>G1234567</td>
-					<td>21/03/2013</td>
-					<td>21/03/2013</td>
-					<td>....</td>
-				</tr> -->
+			<?php if(!empty($uset_info_result)){
+			foreach ($uset_info_result as $row){
+			?>
+				<tr>
+					<td><input type="checkbox" value=""></input></td>
+					<td><?php echo $row['last_name']?></td>
+					<td><?php echo $row['first_name']?></td>
+					<td><?php echo $row['gender']?></td>
+					<td><?php echo $row['birth']?></td>
+					<td><?php echo $row['passport']?></td>
+					<td><?php echo $row['issue']?></td>
+					<td><?php echo $row['expiry']?></td>
+					<td><button class='btn1 detail'><img src='<?=$baseUrl ?>images/text.png'></button></td>
+				</tr>
+			<?php }}?>
 			</tbody>
 		</table>
 		<div class="btnBox2">
@@ -292,76 +296,6 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 <script type="text/javascript">
 window.onload = function(){
 
-	//定义全局变量存在编辑时数据
-	temporary_var = '';
-
-	//获取session数据判断是否存在，存在则遍历显示
-	var data = $.session.get('membership');
-	var user_tr_data = '';
-	
-	//人数
-	if(data != undefined){
-		data = data.replace(/\+/g," "); 
-		data_ex = data.split('-');
-		
-		$.each(data_ex,function(e){
-			if(data_ex[e]!=''){
-				user_tr_data += "<tr><td><input type='checkbox'></input></td>";
-				var val = data_ex[e].split('&');
-				var u_passport = '';
-				var u_full_name = ''
-				var last_name = '';
-				var first_name = '';
-				var gender = '';
-				var birth = '';
-				var passport = '';
-				var issue = '';
-				var expiry = '';
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-				    if(name == 'last_name'){last_name = val;}
-				    if(name == 'first_name'){first_name = val;}
-					if(name == 'gender'){gender = val;}
-					if(name == 'birth'){birth = val.replace(/%2F/g,"/");}
-					if(name == 'passport'){passport = val;}
-					if(name == 'issue'){issue = val.replace(/%2F/g,"/");}
-					if(name == 'expiry'){expiry = val.replace(/%2F/g,"/");}
-				});
-				
-				user_tr_data += "<td>"+last_name+"</td>";
-				user_tr_data += "<td>"+first_name+"</td>";
-				user_tr_data += "<td>"+gender+"</td>";
-				user_tr_data += "<td>"+birth+"</td>";
-				user_tr_data += "<td>"+passport+"</td>";
-				user_tr_data += "<td>"+issue+"</td>";
-				user_tr_data += "<td>"+expiry+"</td>";
-				user_tr_data += "<td><button class='btn1 detail'><img src='<?=$baseUrl ?>images/text.png'></button></td>";
-				user_tr_data += "<tr>";
-			}
-			
-		});
-		$("table#add_uest_info_table tbody").html(user_tr_data);
-
-	}
-	
-
-	field_name = new Array();
-	field_name['last_name'] =  "last_name";
-	field_name['first_name'] = "first_name";
-	field_name['full_name'] = "full_name";
-	field_name['passport'] = "passport_number";
-	field_name['gender'] = "gender";
-	field_name['nationalify'] = "country_code";
-	field_name['email'] = "email";
-	field_name['phone'] = "mobile_number";
-	field_name['birth'] = "birthday";
-	field_name['birth_place'] = "birth_place";
-	field_name['issue'] = "date_issue";
-	field_name['expiry'] = "date_expire";
-
-
 	//add时填入护照号失去焦点判断该护照号是否存在，存在则获取数据显示
 	$("#addPopups .pBox input[name='passport']").blur(function (){
 		var a = 0;
@@ -373,7 +307,6 @@ window.onload = function(){
 			a = Check_buy_ticket(passport);
 			if(a == 1){Alert("You have bought the current route, can't repeat purchase ");return false;}
 
-			
 			//判断护照号是否 存在会员表
 			$.ajax({
 		        url:"<?php echo Url::toRoute(['passportcheckmembership']);?>",
@@ -399,9 +332,6 @@ window.onload = function(){
 		    	        }
 
 		    		}
-
-		    		
-		        		
 		    	}      
 		    });
 		}
@@ -471,39 +401,55 @@ window.onload = function(){
 	$(document).on('click','#addPopups .btnBox2 input#add_uest_info_save',function(){
 
 		if($("#addPopups .btnBox2 input#add_uest_info_save").prop("disabled")){return false;}
-
-		//var m_id = $("#addPopups input[name='m_id']").val();
+		var p_no = $("table#add_uest_info_table tbody input[type='checkbox']:checked").parent().parent().find("td").eq(5).html();
 		
 		var act = $("#addPopups h3 > span").html();
-		
-		var p_no = $("#addPopups input[name='passport']").val();
+		var passport = $("#addPopups input[name='passport']").val();
+		var full_name = $("#addPopups input[name='full_name']").val();
+		var last_name = $("#addPopups input[name='last_name']").val()
+		var first_name = $("#addPopups input[name='first_name']").val();
+		var gender = $("#addPopups select[name='gender']").val();
+		var nationalify = $("#addPopups select[name='nationalify']").val();
+		var email = $("#addPopups input[name='email']").val();
+		var phone = $("#addPopups input[name='phone']").val();
+		var birth = $("#addPopups input[name='birth']").val();
+		var birth_place = $("#addPopups input[name='birth_place']").val();
+		var issue = $("#addPopups input[name='issue']").val();
+		var expiry = $("#addPopups input[name='expiry']").val();
 
-			var key = $("#addPopups input[name='passport']").val();
-			
-			var data = $.session.get("membership");
-			if(data == undefined){
-				data = '';
-				}
-			//编辑保存时先将旧数据清除，再保存新数据
-			if(act == 'Edit'){
-				data = data.replace('-'+temporary_var+'-', "-");
-				}
-			data += $("form#add_uest_info_form").serialize()+'-';
-			//设置session
-			$.session.set("membership", data);
-			
+		//封装json
+		var json_str = '';
+		json_str += '{"passport":"'+passport+'","full_name":"'+full_name+'","last_name":"'+last_name+'",';
+		json_str += '"first_name":"'+first_name+'","gender":"'+gender+'","nationalify":"'+nationalify+'","email":"'+email+'",';
+		json_str += '"phone":"'+phone+'","birth":"'+birth+'","birth_place":"'+birth_place+'","issue":"'+issue+'","expiry":"'+expiry+'"}';
+
+
+		//act_op :1:编辑，2：添加
+		if(act == 'Edit'){
+			var act_op = 1;
+		}else{
+			var act_op = 2;
+		}
+		
+		$.ajax({
+	        url:"<?php echo Url::toRoute(['savesessionadduestinfo']);?>",
+	        type:'post',
+	        async:false,
+	        data:'json_str='+json_str+'&passport='+p_no+'&act_op='+act_op,
+	     	dataType:'json',    
+	    });
 
 			if(act == 'Add'){
 				var str = '';
 				str += "<tr>";
 				str += '<td><input type="checkbox" value=""></input></td>';
-				str += '<td>'+$("#addPopups input[name='last_name']").val()+'</td>';
-				str += '<td>'+$("#addPopups input[name='first_name']").val()+'</td>';
-				str += '<td>'+$("#addPopups select[name='gender']").val()+'</td>';
-				str += '<td>'+$("#addPopups input[name='birth']").val()+'</td>';
-				str += '<td>'+$("#addPopups input[name='passport']").val()+'</td>';
-				str += '<td>'+$("#addPopups input[name='issue']").val()+'</td>';
-				str += '<td>'+$("#addPopups input[name='expiry']").val()+'</td>';
+				str += '<td>'+last_name+'</td>';
+				str += '<td>'+first_name+'</td>';
+				str += '<td>'+gender+'</td>';
+				str += '<td>'+birth+'</td>';
+				str += '<td>'+passport+'</td>';
+				str += '<td>'+issue+'</td>';
+				str += '<td>'+expiry+'</td>';
 				str += "<td><button class='btn1 detail'><img src='<?=$baseUrl ?>images/text.png'></button></td>";
 				str += "</tr>";
 
@@ -513,28 +459,17 @@ window.onload = function(){
 			}else if(act == 'Edit'){
 
 				var tr  = $("table#add_uest_info_table tbody input[type='checkbox']:checked").parent().parent();
-				tr.find("td").eq(1).html($("#addPopups input[name='last_name']").val());
-				tr.find("td").eq(2).html($("#addPopups input[name='first_name']").val());
-				tr.find("td").eq(3).html($("#addPopups select[name='gender']").val());
-				tr.find("td").eq(4).html($("#addPopups input[name='birth']").val());
-				tr.find("td").eq(5).html($("#addPopups input[name='passport']").val());
-				tr.find("td").eq(6).html($("#addPopups input[name='issue']").val());
-				tr.find("td").eq(7).html($("#addPopups input[name='expiry']").val());
+				tr.find("td").eq(1).html(last_name);
+				tr.find("td").eq(2).html(first_name);
+				tr.find("td").eq(3).html(gender);
+				tr.find("td").eq(4).html(birth);
+				tr.find("td").eq(5).html(passport);
+				tr.find("td").eq(6).html(issue);
+				tr.find("td").eq(7).html(expiry);
 
 				
 				Alert("Modify the success");
 			}
-
-            //获取
-           // var v = $("#addPopups input[name='passport_num']").val();
-            //var data = $.session.get("membership");
-            //alert(data);
-            //删除
-            //$.session.remove(key);
-            //清除数据
-            //$.session.clear();
-	
-
 		$(".shadow").hide();
         $(".popups").hide();
 	});
@@ -588,55 +523,31 @@ window.onload = function(){
 
 		var p_no = $("table#add_uest_info_table tbody input[type='checkbox']:checked").parent().parent().find("td").eq(5).html();
 
-		var data = $.session.get('membership');
-		var str = '';	//	存放其他
-		var curr_str = ''; //存放当前
-		data_ex = data.split('-');
-		$.each(data_ex,function(e){
-			if(data_ex[e]!=''){
-				var val = data_ex[e].split('&');
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-			      	  if(name == 'passport' && val == p_no){
-				      	 
-			      			curr_str = data_ex[e];
-				      	  }
-				});
-				
-			}
-			
-		});
-
-		temporary_var = curr_str ; 
-		
-
-		curr_str.split('&').forEach(function(param){
-		  param = param.split('=');
-		  var name = param[0],
-		      val = param[1];
-	      	  if(name == 'birth' || name == 'issue' || name == 'expiry'){
-	      		val = val.replace(/%2F/g,"/");
-		      }
-	      	if(name == 'email'){
-	      		val = val.replace(/%40/g,"@");
-		      }
-		      if(name == 'gender' || name == 'nationalify'){
-			  
-		    	  $("#addPopups select[name='"+name+"']").find("option").each(function(){
-						if($(this).val() ==  val){
-							//alert(val);
-								$(this).prop("selected","selected");
-							}
-			   		});
-			 
-			  }else{
-		      	$("#addPopups span").find("input[name='"+name+"']").val(val);
-			  }
-		});
-		
-
+		//获取需编辑的乘客sesseion信息
+		$.ajax({
+	        url:"<?php echo Url::toRoute(['getsessionpersoninfo']);?>",
+	        type:'get',
+	        async:false,
+	        data:'passport='+p_no,
+	     	dataType:'json',    
+	     	success:function(data){
+				if(data!=0){
+					$("#addPopups span").find("input[name='passport']").val(data['passport']);
+					$("#addPopups span").find("input[name='full_name']").val(data['full_name']);
+					$("#addPopups span").find("input[name='last_name']").val(data['last_name']);
+					$("#addPopups span").find("input[name='first_name']").val(data['first_name']);
+					$("#addPopups select[name='gender']").find("option[value='"+data['gender']+"']").prop('checked','checked');
+					$("#addPopups select[name='nationalify']").find("option[value='"+data['nationalify']+"']").prop('checked','checked');
+					$("#addPopups span").find("input[name='email']").val(data['email']);
+					$("#addPopups span").find("input[name='phone']").val(data['phone']);
+					$("#addPopups span").find("input[name='birth']").val(data['birth']);
+					$("#addPopups span").find("input[name='birth_place']").val(data['birth_place']);
+					$("#addPopups span").find("input[name='issue']").val(data['issue']);
+					$("#addPopups span").find("input[name='expiry']").val(data['expiry']);
+				}
+		    }
+	    });
+	
 	});
 
 	
@@ -645,53 +556,32 @@ window.onload = function(){
 
 		var p_no = $(this).parent().parent().find("td").eq(5).html();
 
-		var data = $.session.get('membership');
-		
-		var str = '';	//	存放其他
-		var curr_str = ''; //存放当前
-		data_ex = data.split('-');
-		$.each(data_ex,function(e){
-			if(data_ex[e]!=''){
-				var val = data_ex[e].split('&');
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-			      	  if(name == 'passport' && val == p_no){
-			      			curr_str = data_ex[e];
-				      	  }
-				});
+		$.ajax({
+	        url:"<?php echo Url::toRoute(['getsessionpersoninfo']);?>",
+	        type:'get',
+	        async:false,
+	        data:'passport='+p_no,
+	     	dataType:'json',    
+	     	success:function(data){
+				if(data!=0){
+					$("#deailPopups span[name='passport']").html(data['passport']);
+					$("#deailPopups span[name='full_name']").html(data['full_name']);
+					$("#deailPopups span[name='last_name']").html(data['last_name']);
+					$("#deailPopups span[name='first_name']").html(data['first_name']);
+					var val = $("#addPopups select[name='gender'] option[value='"+data['gender']+"']").text();
+					$("#deailPopups span[name='gender']").html(val);
+					var val = $("#addPopups select[name='nationalify'] option[value='"+data['nationalify']+"']").text();
+					$("#deailPopups span[name='nationalify']").html(val);
+					$("#deailPopups span[name='email']").html(data['email']);
+					$("#deailPopups span[name='phone']").html(data['phone']);
+					$("#deailPopups span[name='birth']").html(data['birth']);
+					$("#deailPopups span[name='birth_place']").html(data['birth_place']);
+					$("#deailPopups span[name='issue']").html(data['issue']);
+					$("#deailPopups span[name='expiry']").html(data['expiry']);
 				
-			}
-			
-			});
-		
-		//data = data.replace('-'+curr_str+'-', "-");
-
-		//设置session
-		//$.session.set("membership", data);
-
-		
-		//var data = $.session.get(p_no);
-
-		curr_str.split('&').forEach(function(param){
-		  param = param.split('=');
-		  var name = param[0],
-		      val = param[1];
-	      	  if(name == 'birth' || name == 'issue' || name == 'expiry'){
-	      		val = val.replace(/%2F/g,"/");
-	      		
-		      	  }
-	      	if(name == 'email'){
-	      		val = val.replace(/%40/g,"@");
-		      	  }
-	      	  if(name == 'gender' || name == 'nationalify'){
-	      		val = $("#addPopups select[name='"+name+"'] option[value='"+val+"']").text();
-	      		//alert(val);
-	      	  }
-		      $("#deailPopups span[name='"+name+"']").html(val);
-		 
-		});
+				}
+		    }
+	    });
 
 		new PopUps($("#deailPopups"));
 	});
@@ -717,37 +607,25 @@ window.onload = function(){
 
 	$(document).on('click',".popups .btnBox #query_del",function(){
 		var p_no = $("table#add_uest_info_table tbody input[type='checkbox']:checked").parent().parent().find("td").eq(5).html();
+	
+		$.ajax({
+	        url:"<?php echo Url::toRoute(['delsessionpersoninfo']);?>",
+	        type:'get',
+	        async:false,
+	        data:'passport='+p_no,
+	     	dataType:'json',    
+	     	success:function(data){
+				if(data == 1){
+					$("table#add_uest_info_table tbody input[type='checkbox']:checked").parent().parent().remove();
 
-		var data = $.session.get('membership');
-		var str = '';	//	存放其他
-		var curr_str = ''; //存放当前
-		data_ex = data.split('-');
-		$.each(data_ex,function(e){
-			if(data_ex[e]!=''){
-				var val = data_ex[e].split('&');
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-			      	  if(name == 'passport' && val == p_no){
-			      			curr_str = data_ex[e];
-				      	  }
-				});
-				
-			}
-			
-			});
-		//alert(curr_str);
-		data = data.replace(curr_str+'-', "");
-		//alert(data);
-		//设置session
-		$.session.set("membership", data);
+					$(".shadow").hide();
+			        $(".popups").hide();
+					
+				}
+		     	
+	     	}
+		});
 
-		//$.session.remove(p_no);
-		$("table#add_uest_info_table tbody input[type='checkbox']:checked").parent().parent().remove();
-
-		$(".shadow").hide();
-        $(".popups").hide();
 	});
 
 
@@ -808,24 +686,19 @@ function isEmail(str){
 //session验证护照号
 function checkSessionPassport(passport){
 	var a = 0;
-	var data = $.session.get('membership');
-	if(data != undefined){
-		data_ex = data.split('-');
-		$.each(data_ex,function(e){
-			if(data_ex[e]!=''){
-				var val = data_ex[e].split('&');
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-			      	  if(name == 'passport' && val == passport){
-			      			a=1;
-				      }
-				});
-			}
-		});
-	}
-
+	$.ajax({
+        url:"<?php echo Url::toRoute(['checksessionpassport']);?>",
+        type:'get',
+        async:false,
+        data:'passport='+passport,
+     	dataType:'json',   
+     	success:function(data){
+     		if(data == 0){
+     			a=1;
+         	}
+        } 
+    });
+    
 	return a;
 }
 
@@ -833,38 +706,20 @@ function checkSessionPassport(passport){
 //session验证 full_name+gender+birth
 function checkSessionNameSexBirth(full_name,gender,birth){
 	var a = 0;
-	var data = $.session.get('membership');
-	
-	if(data != undefined){
-		var str = '';	//	存放其他
-		var curr_str = ''; //存放当前
-		data_ex = data.split('-');
-		$.each(data_ex,function(e){
-			var s_full_name = 0;
-			var s_gender = 0;
-			var s_birth = 0;
-			if(data_ex[e]!=''){
-				var val = data_ex[e].split('&');
-				val.forEach(function(param){
-				  param = param.split('=');
-				  var name = param[0],
-				      val = param[1];
-					  if(name == 'full_name' && val == full_name){
-				    	  s_full_name = 1;
-				      }
-				      if(name == 'gender' && val == gender){
-				    	  s_gender = 1;
-					  }
-					  if(name == 'birth' && val == birth){
-						  s_birth = 1;
-					  }
-				});
-				
-			}
-			if(s_full_name == 1 && s_gender == 1 && s_birth == 1){a=1;return false;}
-			
-		});
-	}
+	$.ajax({
+        url:"<?php echo Url::toRoute(['checksessionnamegenderbirth']);?>",
+        type:'post',
+        async:false,
+        data:'full_name='+full_name+'&gender='+gender+'&birth='+birth,
+     	dataType:'json',
+    	success:function(data){
+			if(data == 0){
+				a = 1;
+				}
+        	
+        }
+	});
+
 	return a;
 	
 }
@@ -916,8 +771,6 @@ function checkPassPort(passport){
             		}
     	        }
 
-
-    	       // $("#addPopups input[name='m_id']").val(data['m_id']);
     		}
 
     		
@@ -975,8 +828,6 @@ var a = 0;
     					}
             		}
     	        }
-
-    			//$("#addPopups input[name='m_id']").val(data['m_id']);
     		}
 
     		

@@ -3,21 +3,17 @@
 #nav > div { display: inline-block; padding-top: 22px; }
 #nav .module { width: 58px; margin-left: 24px; font-size: 16px; line-height: 18px; color: #fff; }
 #nav .module span { color: #f8b551; }
-#nav .user { width: 194px; height: 116px; text-align: center; background-color: #0068b7; border-top-left-radius: 60px 80px; border-bottom-left-radius: 60px 80px; color: #fff; box-sizing: border-box; }
+#nav .user { width: 194px; height: 116px; text-align: center; background: url(img/user-bg.jpg) no-repeat; color: #fff; }
 #nav .user img { vertical-align: middle; }
 #nav .user span { font-size: 18px; line-height: 32px; }
 #nav .user .time { font-size: 16px; }
 
 /*main*/
-#main { padding: 20px 0; }
-#main .container { background-color: #eee; }
-#main .page { height: 100%; }
-#main .page div { width: 1254px; height: 100%; line-height: 200px; padding: 100px 60px; margin: 0 auto; box-sizing: border-box; }
-#main .module { line-height: 32px; margin: 0 20px; font-size: 14px; color: #333; font-family:Arial, "宋体", sans-serif; }
+#main { padding: 2em 0; box-sizing: border-box; }
+#main .container { height: 100%; margin: 0 auto; background-color: #eee; }
+#main .page div { width: 1150px; margin: 0 auto; padding-top: 100px; }
+#main .module { font-size: 12px; font-family:Arial, sans-serif;line-height: 32px; color: #333; }
+#main .module + .module { margin-left: 48px; }
 #main .pageNum { position: absolute; bottom: 64px; width: 100%; text-align: center; }
 #main .pageNum a { display: inline-block; width: 20px; height: 20px; text-align: center; border: 1px solid #333; border-radius: 20px; color: #333; }
 #main .pageNum a.current { background-color: #333; color: #fff;}
-#main .pageBtn a { position: absolute; top: 50%; display: inline-block; width: 60px; padding: 12px 0; margin-top: -46px; box-sizing: border-box; background-color: #d6d6d6; text-align: center; font: bolder 60px sans-serif; color: #666; }
-#main .pageBtn .prev { left: 0; }
-#main .pageBtn .next { right: 0; }
-#main .pageBtn .disabled { color: #eee; }

@@ -213,6 +213,33 @@ class Helper extends Controller
 		$date = $year[2].'/'.$year[1].'/'.$year[0].' '.$time[1];
 		return $date;
 	}
+	
+	public static function createOrderno()
+	{
+		$my_code = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+			
+		$order_sn = $my_code[intval(date('m'))].(intval(date('d')) < 10 ? intval(date('d')) : $my_code[(intval(date('d'))-10)]).date('Y')
+		.substr(time(),-5).substr(microtime(),2,5)
+		.sprintf('%02d', rand(0, 99));
+			
+		return $order_sn;
+	}
+	
+	//return age
+	public static function Getage($birthday){
+		$age = strtotime($birthday);
+		if($age === false){
+			return false;
+		}
+		list($y1,$m1,$d1) = explode("-",date("Y-m-d",$age));
+		$now = strtotime("now");
+		list($y2,$m2,$d2) = explode("-",date("Y-m-d",$now));
+		$age = $y2 - $y1;
+		if((int)($m2.$d2) < (int)($m1.$d1))
+			$age -= 1;
+			return $age;
+	
+	}
 		
 	
 }

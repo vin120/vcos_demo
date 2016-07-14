@@ -7,7 +7,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\views\myasset\LoginAsset;
-use yii\helpers\Url;
 
 LoginAsset::register($this);
 
@@ -16,16 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $baseUrl = $this->assetBundles[LoginAsset::className()]->baseUrl . '/';
 
-$curr_language = Yii::$app->language;
-
 ?>
 
 	<header id="header">
-		<h1 id="logo" class="l"><img src="<?= $baseUrl ?>/img/logo.png">  <?= \Yii::t('app', 'Cruise One System');?></h1>
-		<div id="mylang">
-			<span<?= ($curr_language == 'zh-CN' ? ' class="activate"':'')?> ><a href="<?php echo  Url::current(['lang' => 'zh-CN']); ?>">中文</a></span>
-			<span<?= ($curr_language == 'en-US' ? ' class="activate"':'')?>><a href="<?php echo  Url::current(['lang' => 'en-US']); ?>">English</a></span>
-		</div>
+		<h1 id="logo" class="l"><img src="<?= $baseUrl ?>/img/logo.png"><?= \Yii::t('app', '泛网邮轮管理系统');?></h1>
 	</header>
 	<main id="main">
 		<div class="container">
@@ -42,7 +35,6 @@ $curr_language = Yii::$app->language;
 								<?=
 									Html::activeTextInput($model, 'username',['maxlength'=>20,'required'=>'required',
 									'oninvalid'=>'setCustomValidity("'. \Yii::t('app', 'Username Can\'t be empty').'")',
-									'oninput'=>'setCustomValidity("")',
 									'autofocus'=>'autofocus','placeholder' =>\Yii::t('app', 'Username')])
 								?>
 							</p>
@@ -50,7 +42,6 @@ $curr_language = Yii::$app->language;
 								<img src="<?= $baseUrl ?>img/login-pw.png">
 								<?= Html::activePasswordInput($model, 'password',['maxlength'=>20,'required'=>'required',
 									'oninvalid'=>'setCustomValidity("'. \Yii::t('app', 'Password Can\'t be empty').'")',
-									'oninput'=>'setCustomValidity("")',
 									'placeholder'=>\Yii::t('app', 'Password')])?>
 							</p>
 							<p class="remember">

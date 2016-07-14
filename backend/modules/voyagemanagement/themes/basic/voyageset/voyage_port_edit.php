@@ -59,7 +59,7 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 					<span><?php echo yii::t('app','Port')?>:</span>
 					<select id="port_code" name="port_code" class='input_select'>
 						<?php foreach($port as $row){?>
-						<option id="<?php echo $row['port_code']?>" value="<?php echo $row['port_code'] ?>" <?php if($voyage_port['port_code'] == $row['port_code']){echo "selected='selected'";}?> ><?php echo $row['port_name'] ;?> </option>
+						<option id="<?php echo $row['port_code']?>" value="<?php echo $row['port_code'] ?>" <?php if($voyage_port['port_code'] === $row['port_code']){echo "selected='selected'";}?> ><?php echo $row['port_name'] ;?> </option>
 						<?php } ?>
 					</select>
 				</label>

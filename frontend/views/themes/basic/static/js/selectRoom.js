@@ -228,7 +228,7 @@ $(function() {
 			par_obj.find('.error_tips').removeClass('hidden');
 			par_obj.find('.cabin_price_show').addClass('hidden');
 		}else{
-			par_obj.find('.cabin_price_show p:first-child>em').html('￥'+$bed_sum_price);
+			par_obj.find('.cabin_price_show p.price>em').html('￥'+$bed_sum_price);
 			par_obj.find('.cabin_price_show p:last-child').html('人均：￥'+age_person_price);
 			par_obj.find('.cabin_price_show').removeClass('hidden');
 			par_obj.find('.error_tips').addClass('hidden');
@@ -349,7 +349,7 @@ $(function() {
 			par_obj.find('.error_tips').removeClass('hidden');
 			par_obj.find('.cabin_price_show').addClass('hidden');
 		}else{
-			par_obj.find('.cabin_price_show p:first-child>em').html('￥'+$bed_sum_price);
+			par_obj.find('.cabin_price_show p.price>em').html('￥'+$bed_sum_price);
 			par_obj.find('.cabin_price_show p:last-child').html('人均：￥'+age_person_price);
 			par_obj.find('.cabin_price_show').removeClass('hidden');
 			par_obj.find('.error_tips').addClass('hidden');
@@ -380,15 +380,7 @@ $(function() {
 	});
 	
 	
-	// 点击下一步
-	$(".roomType .nextBtn").on("click",function() {
-		if ($(this).hasClass("disabled")) {
-			return;
-		}
-
-		$(".shadow").show();
-		$(".loginBox").show();
-	});
+	
 
 	// 点击关闭登录弹窗
 	$(".loginBox .close").on("click",function() {
@@ -488,7 +480,7 @@ function cabins_all_count(){
 		var display = $(this).css('display');
 		var obj = $(this).parents('.tr_table_cabin');
 		if(display == 'block'){
-			var single_cabin = $(this).find("p:first-child em").html();
+			var single_cabin = $(this).find("p.price em").html();
 			single_cabin = parseFloat(single_cabin.replace("￥", ""));
 			cabins_all_price += single_cabin;
 			
@@ -529,10 +521,6 @@ function cabins_all_count(){
 }
 
 
-function nextCheck(){
-	
-	return false;
-}
 
 
 
@@ -555,7 +543,7 @@ function savejson(){
 			var this_sum = obj.find("span[op='sum'] input[type='text']").val();
 			data_arr += '"room":"'+this_sum+'",';
 			
-			var single_cabin = $(this).find("p:first-child em").html();
+			var single_cabin = $(this).find("p.price em").html();
 			single_cabin = parseFloat(single_cabin.replace("￥", ""));
 			data_arr += '"price":"'+single_cabin+'"},';
 			
@@ -564,7 +552,7 @@ function savejson(){
 	});
 	data_arr = data_arr.substring(0,data_arr.length-1);
 	data_arr += ']';
-	
+	//保存session
 	$.ajax({
 	    url:save_session_cabins,
 	    type:'post',
@@ -573,18 +561,16 @@ function savejson(){
 	 	dataType:'json',
 		
 	});
+	//判断是否存在填写信息session和附加费session，存在则删除
+	$.ajax({
+	    url:clear_session_cabins,
+	    type:'post',
+	    async:false,
+	 	dataType:'json',
+		
+	});
 	
 	
-	//设置session
-	//$.session.set("room", data_arr);
-	//var data = $.session.get(p_no); // 获取
-	//删除
-    //$.session.remove(key);
-    //清除数据
-    //$.session.clear();
-	
-	//var data = $.session.get('room');
-	//alert(data);
 	
 	return true;
 	

@@ -39,24 +39,42 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 				<tr>
 					<th>No.</th>
 					<th>Cabin Type</th>
+					<th>Prompt</th>
 					<th>Reservation Quantity</th>
 					<th>Residual Quantity</th>
 				</tr>
 			</thead>
 			<tbody>
-				<!-- <tr>
+			<?php if(!empty($cabins_info)){
+				$order_arr = array();
+				foreach ($order_data as $val){
+					$order_arr[$val['cabin_type_code']] = $val['count'];
+				}	
+				$option = '<option num="0" value="0">Please select</option>';
+				foreach ($all_data as $val){
+					if(isset($order_arr[$val['type_code']])){
+						$num = (int)$val['count'] - (int)$order_arr[$val['type_code']];
+					}else{
+						$num = (int)$val['count'];
+					}
+					$option .= '<option min_live="'.$val['live_number'].'" check_num="'.$val['check_num'].'" num="'.$num.'" value="'.$val['type_code'].'" >'.$val['type_name'].'</option>';	
+				}
+				foreach($cabins_info as $row){
+					$this_option = str_replace('value="'.$row['type'].'"','value="'.$row['type'].'" selected="selected" ',$option);
+					$this_prompt = "Can stay ".$row['check_num']." people, check in at least ".$row['min_live']." adults";
+			?>
+				<tr>
 					<td><input type="checkbox" ></td>
 					<td>
-						<select>
-							<option>Owner Suite</option>
-						</select>
+					<select>
+					<?php echo $this_option;?>
+					</select>
 					</td>
-					
-					<td>
-						<input type="text"></input>
-					</td>
-					<td class="readOnly">9</td>
-				</tr> -->
+					<td><?php echo $this_prompt;?></td>
+					<td><input type="text" value="<?php echo $row['room_num']?>" onkeyup="this.value=this.value.replace(/[^1-9]/g,\'\')"  onafterpaste="this.value=this.value.replace(/[^1-9]/g,\'\')"></input></td>
+					<td class="readOnly"></td>
+				</tr>
+			<?php }}?>
 			</tbody>
 		</table>
 		<div class="btnBox2">
@@ -82,81 +100,21 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 <script type="text/javascript">
 window.onload = function(){
 
-	//获取session数据判断是否存在，存在则遍历显示
-	var room_data = $.session.get("room_<?php echo $code;?>");
-	
-	if(room_data != undefined){
-		// 002/2=2/1&004/4=4/2
-		//alert(room_data);
+	<?php if(!empty($cabins_info)){?>
+	$("table#choose_table tbody tr").each(function(e){
+		var this_index = $(this).index();
+		var selectedValue = $(this).find("select option:selected").val();
+
+		$(this).siblings().find("select option[value='" + selectedValue + "']").remove();
 		
-		<?php 
-			$order_arr = array();
-			foreach ($order_data as $val){
-				$order_arr[$val['cabin_type_code']] = $val['count'];
-			}?>
-			
-			var option = '<option num="0" value="0">Please select</option>';
-			<?php  foreach ($all_data as $val){
-			if(isset($order_arr[$val['type_code']])){
-				$num = (int)$val['count'] - (int)$order_arr[$val['type_code']];
-			}else{
-				$num = (int)$val['count'];
-			}
-		?>
-				option += "<option check_num ='<?php echo $val['check_num'];?>' num='<?php echo $num;?>' value='<?php echo $val['type_code']?>'><?php echo $val['type_name']?></option>";
-		<?php }?>
+			var this_num = $(this).find("select option:selected").attr("num");
+			if(this_num>10){
+				this_num = 'Enough';
+				}
+			$(this).find("td").eq(4).html(this_num);
 
-		//alert(option);
-				
-		var room_only = room_data.split("&");
-		$.each(room_only,function(k){
-			var split = room_only[k].split("=");
-			var name = split[0].split("/");
-			var val = split[1].split("/");
-			
-			
-			var l_left = "value='"+name[0]+"'";
-			var r_right = "value='"+name[0]+"' selected='selected'";
-			var this_option = option.replace(l_left,r_right);
-			
-			var str = '';
-			str += "<tr>";
-			str += '<td><input type="checkbox" ></td>';
-			str += '<td>';
-			str += '<select>';
-			str += this_option;
-			str += '</select>';
-			str += '</td>';
-			str += '<td><input type="text" value="'+val[1]+'" onkeyup="this.value=this.value.replace(/[^1-9]/g,\'\')"  onafterpaste="this.value=this.value.replace(/[^1-9]/g,\'\')"></input></td>';
-			str += '<td class="readOnly"></td>';
-			str += '</tr>';	
-
-			$("table#choose_table tbody").append(str);
-			
-		});
-
-		$("table#choose_table tbody tr").each(function(e){
-			var this_index = $(this).index();
-			var selectedValue = $(this).find("select option:selected").val();
-
-			$(this).siblings().find("select option[value='" + selectedValue + "']").remove();
-			
- 			var this_num = $(this).find("select option:selected").attr("num");
- 			if(this_num>10){
- 				this_num = 'Enough';
- 				}
- 			$(this).find("td").eq(3).html(this_num);
-
-		});
-
-	}
-
-
-
-
-
-
-
+	});
+	<?php }?>
 	
 
 	$("#choose_add_tr_but").on('click',function(){
@@ -183,7 +141,7 @@ window.onload = function(){
 				$num = (int)$val['count'];
 			}
 				?>
-					option += "<option check_num ='<?php echo $val['check_num'];?>' num='<?php echo $num;?>' value='<?php echo $val['type_code']?>'><?php echo $val['type_name']?></option>";
+					option += "<option min_live='<?php echo $val['live_number'];?>' check_num ='<?php echo $val['check_num'];?>' num='<?php echo $num;?>' value='<?php echo $val['type_code']?>'><?php echo $val['type_name']?></option>";
 			<?php }?>
 		}else{
 				var name = new Array();
@@ -202,7 +160,7 @@ window.onload = function(){
 				}
 				?>
 				if($.inArray("<?php echo $val['type_code']?>", name)==-1){
-					option += "<option check_num ='<?php echo $val['check_num'];?>' num='<?php echo $num;?>' value='<?php echo $val['type_code']?>'><?php echo $val['type_name']?></option>";
+					option += "<option min_live='<?php echo $val['live_number'];?>' check_num ='<?php echo $val['check_num'];?>' num='<?php echo $num;?>' value='<?php echo $val['type_code']?>'><?php echo $val['type_name']?></option>";
 				}
 			<?php }?>
 
@@ -217,6 +175,7 @@ window.onload = function(){
 		str += option;
 		str += '</select>';
 		str += '</td>';
+		str += '<td></td>';
 		str += '<td><input type="text" onkeyup="this.value=this.value.replace(/[^1-9]/g,\'\')"  onafterpaste="this.value=this.value.replace(/[^1-9]/g,\'\')"></input></td>';
 		str += '<td class="readOnly"></td>';
 		str += '</tr>';	
@@ -242,16 +201,20 @@ window.onload = function(){
 
 	$(document).on('change','#choose_table tbody select',function(){
 		var val = $(this).val();
+		var this_prompt = '';
 		var this_num = $(this).find("option:selected").attr("num");
+		var this_min_live = $(this).find("option:selected").attr("min_live");
 		var this_check_num = $(this).find("option:selected").attr("check_num");
 		if(val == 0){
 			this_num = '';
-			}
+		}else{
+			this_prompt = "Can stay "+this_check_num+" people, check in at least "+this_min_live+" adults ";
+		}
 		if(this_num>10){
 			this_num = 'Enough';
-			}
+		}
 		$(this).parent().parent().find(".readOnly").html(this_num);
-
+		$(this).parent().parent().find("td").eq(2).html(this_prompt);
 		
 		var index = $("#choose_table tbody select").index(this);
 		$("#choose_table tbody select").each(function(){
@@ -261,7 +224,7 @@ window.onload = function(){
 					$(this).find("option[value='"+val+"']").remove();
 				}
 				if(curr_val != 0){
-				$(this).append("<option check_num='"+this_check_num+"' num='"+curr_num+"' value='"+curr_val+"'>"+curr_name+"</option>");
+				$(this).append("<option min_live='"+this_min_live+"' check_num='"+this_check_num+"' num='"+curr_num+"' value='"+curr_val+"'>"+curr_name+"</option>");
 				}
 			}
 		});
@@ -277,9 +240,9 @@ window.onload = function(){
 		if(length == 0){
 			Alert("Please select delete items");return false;
 			}
-		if(length > 1){
-			Alert("Can only choose a deleted items");return false;
-			}
+// 		if(length > 1){
+// 			Alert("Can only choose a deleted items");return false;
+// 			}
 		
 		new PopUps($(".prompt"));
 	});
@@ -287,31 +250,26 @@ window.onload = function(){
 
 	$(document).on('click',".popups .btnBox #query_del",function(){
 		var last_room_data = '';
-		var curr_cabin_type = $(this).parent().parent().find("select option:selected").val();
-		
+
+		var cabin_types = '';
 		$("table#choose_table tbody").find("input[type='checkbox']:checked").each(function(){
-			var cabin_type = $(this).find("select").val();
-			var room_data = $.session.get("room_<?php echo $code;?>");
-			// 002/2=2/1&004/4=4/2
-			if(room_data != undefined){
-				var ex_room_data = room_data.split("&");
-				$.each(ex_room_data,function(e){
-					var name = ex_room_data[e].split("=");
-					name = name[0].split("/");
-					name = name[0];
-					if(curr_cabin_type != name){
-						last_room_data += ex_room_data[e]+'&';
-					}
-				});
-				last_room_data=last_room_data.substring(0,last_room_data.length-1);
-				
-				//设置session
-				$.session.set("room_<?php echo $code;?>", last_room_data);
-			}
-			$(this).parent().parent().remove();
-			$(".shadow").hide();
-	        $(".popups").hide();
+			var cabin_type = $(this).parents('tr').find("select").val();
+			cabin_types +=  cabin_type+',';
 		});
+		//删除session
+		$.ajax({
+		    url:"<?php echo Url::toRoute(['deljsonchooseandreservation']);?>",
+		    type:'post',
+		    async:false,
+		    data:'cabin_types='+cabin_types,
+		 	dataType:'json',
+		
+		});
+		
+		$("table#choose_table tbody").find("input[type='checkbox']:checked").parents('tr').remove();
+		$(".shadow").hide();
+        $(".popups").hide();
+
 		
 	});
 
@@ -320,11 +278,13 @@ window.onload = function(){
 	$("#choose_save_next_but").on('click',function(){
 		var length = $("table#choose_table tbody").find("tr").length;
 		if(length == 0){Alert("Did not choose the room");return false;}
-		var data = '';
+		
 		var a =0;
+		json_str = '';
 		$("table#choose_table tbody").find("tr").each(function(){
 			var cabin_type = $(this).find("select").val();
 			var cabin_type_text = $(this).find("select option:selected").text();
+			var cabin_type_min_live = parseInt($(this).find("select option:selected").attr("min_live"));
 			var cabin_type_num = parseInt($(this).find("select option:selected").attr("num"));
 			var cabin_type_check_num = parseInt($(this).find("select option:selected").attr("check_num"));
 			var number = $(this).find("input[type='text']").val();
@@ -333,19 +293,27 @@ window.onload = function(){
 				number = parseInt(number);
 				if(number>10){Alert("Room number can only enter an integer less than 10");a=1;return false;}
 				if(number>cabin_type_num){Alert("Enter the room number is not greater than the rest of the room number ");a=1;return false;}
-				data += cabin_type+'/'+cabin_type_text+'='+cabin_type_check_num+'/'+number+'&';
+			
+				// 保存session
+				json_str += '{"type":"'+cabin_type+'","type_text":"'+cabin_type_text+'","min_live":"'+cabin_type_min_live+'","check_num":"'+cabin_type_check_num+'","room_num":"'+number+'"},';
+	
 			}
 		});
 		if(a==1){return false;}
-		if(data == ''){Alert("Did not choose the room");return false;}
-		data=data.substring(0,data.length-1);
+		if(json_str == ''){Alert("Did not choose the room");return false;}
 		
-		//设置session
-		$.session.set("room_<?php echo $code;?>", data);
-
+		// 保存session
+		$.ajax({
+		    url:"<?php echo Url::toRoute(['savejsonchooseandreservation']);?>",
+		    type:'post',
+		    async:false,
+		    data:'json_str='+json_str,
+		 	dataType:'json',
+			
+		});
+		
 		location.href="<?php echo Url::toRoute(['surchargecabinassignments','code'=>$code])?>";
-		
-
+	
 	});
 	
 

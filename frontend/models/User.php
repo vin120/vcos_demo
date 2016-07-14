@@ -131,23 +131,20 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-    	return true;
-//     	if('888888' == $this->password){
-//     		//var_dump('888888');
-// 			//默认密码
-// 			if ($password == '888888'){
-// 				return true;
-// 			}else{
-// 				return false;
-// 			}
-// 		}else{
-// 			//var_dump('9999');
-// 			if(md5($password) == $this->password){
-// 				return true;
-// 			}else{
-// 				return false;
-// 			}
-// 		}
+    	if('888888' == $this->password){
+			//默认密码
+			if ($password == '888888'){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			if(md5($password) == $this->password){
+				return true;
+			}else{
+				return false;
+			}
+		}
 		
 		//return $this->password === $password;
     	

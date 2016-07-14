@@ -7,7 +7,6 @@ use yii\web\Controller;
 use app\models\LoginForm;
 use yii\filters\VerbFilter;
 
-use backend\components\MyLanguage;
 /**
  * Site controller
  */
@@ -55,10 +54,6 @@ class SiteController extends Controller
         ];
     }
 
-    public function init()
-    {
-        MyLanguage::setLanguage();
-    }
     public function actionIndex()
     {
         return $this->render('main');
@@ -72,10 +67,10 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        var_dump(Yii::$app->request->post());exit;
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+
             return $this->render('my_login', [
                 'model' => $model,
             ]);
@@ -84,7 +79,7 @@ class SiteController extends Controller
 
     public function actionLogout()
     {
-        Yii::$app->user->logout(false);
+        Yii::$app->user->logout();
 
         return $this->goHome();
     }

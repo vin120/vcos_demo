@@ -5,7 +5,6 @@ namespace app\modules\membermanagement;
 
 use Yii;
 use yii\base\Theme;
-use yii\filters\AccessControl;
 // use yii\helpers\Url;
 
 class Member extends \yii\base\Module
@@ -22,20 +21,5 @@ class Member extends \yii\base\Module
             'pathMap' => ['@app/modules/membermanagement/views'=>'@app/modules/membermanagement/themes/basic'],
             'baseUrl' => '@app/modules/membermanagement/themes/basic',
         ]);
-    }
-    
-    public function behaviors()
-    {
-    	return [
-    			'access' => [
-    					'class' => AccessControl::className(),
-    					'rules' => [
-    							[
-    									'allow' => true,
-    									'roles' => ['@'],
-    							],
-    					],
-    			]
-    	];
     }
 }

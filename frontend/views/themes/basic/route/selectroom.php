@@ -21,6 +21,7 @@ $selectroom_baseUrl = $this->assetBundles[SelectroomThemeAsset::className()]->ba
 </style>
 <script>
 var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
+var clear_session_cabins = "<?php echo Url::toRoute(['clearsessioncabins']);?>";
 </script>
 <div id="selectRoom" class="main">
 	<div class="container box">
@@ -70,27 +71,62 @@ var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
 							</li>
 						<?php }?>
 					</ul>
-					<a href="<?php echo Url::toRoute(['fillinfo']).'&voyage_code='.$voyage_result['voyage_code'];?>" onclick="return nextCheck()" class="nextBtn r disabled">下一步</a>
-					<div class="info r title_sum_price hidden">
-						<span>总价：<em class="price">￥11111</em></span>
-						<span>人均：￥111</span>
+					<?php 
+					$adult_sum = 0;
+					$children_sum = 0;
+					$room_sum = 0;
+					$sum_price = 0;
+					$avg_price = 0;
+					if(!empty($session_cabins_data)){
+						foreach ($session_cabins_data as $row){
+							$adult_sum += (int)$row['adult'];
+							$children_sum += (int)$row['children'];
+							$room_sum += (int)$row['room'];
+							$sum_price += (float)$row['price'];
+						}
+						$avg_price =  $sum_price/((int)$adult_sum + (int)$children_sum);
+						
+					}?>
+					
+					<a href="<?php echo Url::toRoute(['fillinfo']).'&voyage_code='.$voyage_result['voyage_code'];?>" onclick="return nextCheck()" class="nextBtn r <?php echo empty($session_cabins_data)?"disabled":"";?>">下一步</a>
+					<div class="info r title_sum_price <?php echo empty($session_cabins_data)?"hidden":"";?>">
+						<span>总价：<em class="price">￥<?php echo $sum_price;?></em></span>
+						<span>人均：￥<?php echo $avg_price;?></span>
 					</div>
-					<div class="info r title_sum_number hidden">
-						<span>入住：成人1人，儿童1人</span>
-						<span>房间：1间</span>
+					<div class="info r title_sum_number <?php echo empty($session_cabins_data)?"hidden":"";?>">
+						<span>入住：成人<?php echo $adult_sum;?>人，儿童<?php echo $children_sum;?>人</span>
+						<span>房间：<?php echo $room_sum;?>间</span>
 					</div>
-					<div class="info r title_error">
+					<div class="info r title_error <?php echo empty($session_cabins_data)?"":"hidden";?>">
 						<p>请在下方选择入住人数进行预定</p>
 					</div> 
 				</div>
 			<div class="tabContent roomList">
 			<!-- foreach start -->
-			<?php foreach ($cabin_result as $k=>$row){?>
+			<?php foreach ($cabin_result as $k=>$row){ ?>
 				<div>
 					<h3><?php echo $row['name']?></h3>
-					<?php if(!empty($row['child'])){?>
+					<?php if(!empty($row['child'])){ ?>
 					<ul class="active box">
-					<?php foreach($row['child'] as $key=>$value){?>
+					<?php foreach($row['child'] as $key=>$value){
+						$adult = 0;
+						$child = 0;
+						$room = 0;
+						$price = 0;
+						$avg_pri = 0;
+						if(!empty($session_cabins_data)){
+							foreach ($session_cabins_data as $row){
+								if($value['type_code'] == $row['type_code']){
+									$adult = $row['adult'];
+									$child = $row['children'];
+									$room = $row['room'];
+									$price = $row['price'];
+									$avg_pri = (float)$price/((int)$adult + (int)$child);
+								}
+							}
+							
+						}
+					?>
 					<li>
 						<div class="clearfix">
 							<div class="l selectRoom">
@@ -132,16 +168,16 @@ var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
 											<td>成人：<em>￥<?php echo $value['last_bed_price']?></em></td>
 											<td>
 												<span class="inputNum" op='adult'>
-													<span class="disabled">-</span>
-													<input type="text" readonly="readonly" name="" value="0">
+													<span class="<?php echo $adult>0?"":"disabled";?>">-</span>
+													<input type="text" readonly="readonly" name="" value="<?php echo $adult;?>">
 													<span>+</span>
 												</span>
 											</td>
 											<td>
 												<span class="inputNum" op="sum">
-													<span class="disabled">-</span>
-													<input type="text" readonly="readonly" name="" value="0">
-													<span class="disabled">+</span>
+													<span class="<?php echo (ceil(((int)$adult+(int)$child)/(int)$value['check_num'])<$room)?"":"disabled";?>">-</span>
+													<input type="text" readonly="readonly" name="" value="<?php echo $room;?>">
+													<span class="<?php echo (floor($adult/$value['live_number'])>$room)?"":"disabled";?>">+</span>
 												</span>
 											</td>
 										</tr>
@@ -150,9 +186,9 @@ var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
 											<td>儿童：<em>￥<?php echo (float)$value['last_bed_price']*(float)$children_pre['s_p_price']/100;?></em></td>
 											<td> 
 												<span class="inputNum" op="children">
-													<span class="disabled">-</span>
-													<input type="text" readonly="readonly" name="" value="0">
-													<span class="disabled">+</span>
+													<span class="<?php echo $child>0?"":"disabled";?>">-</span>
+													<input type="text" readonly="readonly" name="" value="<?php echo $child?>">
+													<span class="<?php echo ((((int)$room*(int)$value['check_num'])-(int)$adult)>$child)?"":"disabled";?>">+</span>
 												</span>
 											</td>
 											<td>
@@ -161,18 +197,18 @@ var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
 										</tr>
 									</tbody>
 								</table>
-								<div class="r btnBox cabin_price_show hidden">
-									<!-- <p>原价：<del>￥11111</del></p> -->
-									<p class="price" style="margin-top: 30px;">总价：<em>￥123</em></p>
-									<p>人均：￥111</p>
+								<div class="r btnBox cabin_price_show <?php echo $price==0?"hidden":"";?>">
+									<p style="height:40px;">原价：<del>￥11111</del></p>
+									<p class="price">总价：<em>￥<?php echo $price;?></em></p>
+									<p>人均：￥<?php echo $avg_pri;?></p>
 								</div>
-								<a style="cursor: pointer;color:blue" class="delete color hidden">清除</a>
+								<a style="cursor: pointer;color:blue" class="delete color <?php echo $price==0?"hidden":"";?>">清除</a>
 								
-								<div class="r btnBox error_tips  hidden">
+								<div class="r btnBox error_tips hidden">
 									<p class="point" style="color:red">每间舱房必须入住<em><?php echo $value['live_number']?></em>名成人，请修改</p>
 								</div>
 								
-								<div class="r btnBox tips">
+								<div class="r btnBox tips <?php echo $price==0?"":"hidden";?>">
 									<p class="point">请先选择入住人数</p>
 								</div>
 								
@@ -230,17 +266,20 @@ var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
 	</div>
 	
 	<div class="shadow"></div>
-	<form action='<?php echo Url::to(['site/login']);?>' method="post" >
+	<!-- <form action='<//?php echo Url::toRoute(['site/login']);?>' method="post" >
+	<input type="hidden" name="_csrf" value="<//?php echo Yii::$app->request->csrfToken?>">
+	<input type="hidden" name="voyage_code" value="<//?php echo $voyage_result['voyage_code'];?>">
+	<input type="hidden" value="2" name="act" />-->
 	<div class="loginBox">
 		<h3>会员登录预定</h3>
 		<div class="loginForm">
 			<p>
 				<label>
 					<span>登录名：</span>
-					<input type="text" name="name" placeholder="用户名/卡号/手机/邮箱">
+					<input type="text" name="username" placeholder="用户名/卡号/手机/邮箱">
 				</label>
 				<span class="wrong">
-					登录名不能为空
+					
 				</span>
 			</p>
 			<p>
@@ -253,19 +292,86 @@ var save_session_cabins = "<?php echo Url::toRoute(['savesessioncabins']);?>";
 		</div>
 		<p class="autoLogin">
 			<label>
-				<span class="checkbox"><span class="icon-checkmark"></span><input type="checkbox" name=""></span>
+				<span class="checkbox"><span class="icon-checkmark"></span><input value="1" type="checkbox" name="checked"></span>
 				<span>30天内自动登录</span>
 			</label>
-			<a href="<?php echo Url::toRoute(['register'])?>" class="color r">免费注册</a>
+			<a href="<?php echo Url::toRoute(['/route/register'])?>" class="color r">免费注册</a>
 		</p>
 		<!-- <p class="wrong">
 			登录名或密码错误
 		</p> -->
 		<p class="btnBox">
-			<input type="submit" value="登录" class="btn2">
-			<a href="<?php echo Url::toRoute(['fillinfonologin']).'&voyage_code='.$voyage_result['voyage_code'];?>" onclick="return savejson()"><input type="button" value="不登录，直接预定" class="btn1"></a>
+			<input type="button" value="登录" class="btn2 login_but">
+			<a href="<?php echo Url::toRoute(['fillinfo']).'&voyage_code='.$voyage_result['voyage_code'];?>" onclick="return savejson()"><input type="button" value="不登录，直接预定" class="btn1"></a>
 		</p>
 		<a href="#" class="close">×</a>
 	</div>
-	</form>
+	<!-- </form> -->
 </div>
+
+
+<script type="text/javascript">
+
+window.onload = function(){
+	$(".loginForm input[name='username']").focus(function(){
+		$(this).parents("p").find("span.wrong").remove();
+	});
+	
+	$(document).on('click',".loginBox input[type='button'].login_but",function(){
+		var username = $(this).parents(".loginBox").find("input[name='username']").val();
+		var password = $(this).parents(".loginBox").find("input[name='password']").val();
+		var checked = $(this).parents(".loginBox").find("input[name='checked']").is(':checked');
+		var _csrf = '<?php echo Yii::$app->request->csrfToken?>';
+		
+		if(checked == true){var check="&LoginForm[rememberMe]=1";}else{var check='';}
+		$.ajax({
+		    url:"<?php echo Url::toRoute(['site/login']);?>",
+		    type:'post',
+		    async:false,
+		    data:'LoginForm[username]='+username+'&LoginForm[password]='+password+check+'&_csrf='+_csrf+'&act=2',
+		 	dataType:'json',
+		 	success:function(data){
+			 	if(data == false){
+					$(".wrong").html('登录失败，账号或密码错误');
+			 	}else{
+			 		savejson();
+			 		
+			 		location.href = "<?php echo Url::toRoute(['fillinfo']).'&voyage_code='.$voyage_result['voyage_code'];?>";
+
+				}
+		 		
+			}
+			
+		});
+		
+	});
+
+
+// 	//点击下一步
+// 	$(".roomType .nextBtn").on("click",function() {
+		
+// 	});
+}
+
+//点击下一步验证
+function nextCheck(){
+	
+	<?php if(!isset(Yii::$app->user->identity->id)) {?>
+	if ($(this).hasClass("disabled")) {
+		return;
+	}
+
+	$(".shadow").show();
+	$(".loginBox").show();
+	return false;
+	<?php }else {?>
+	 savejson();
+	 return true;
+	<?php }?>
+	
+}
+
+
+
+
+</script>

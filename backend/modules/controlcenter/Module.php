@@ -4,8 +4,6 @@ namespace app\modules\controlcenter;
 
 use Yii;
 use yii\base\Theme;
-use yii\filters\AccessControl;
-
 /**
  * Created by PhpStorm.
  * User: leijiao
@@ -26,20 +24,5 @@ class Module extends \yii\base\Module
             'pathMap' => ['@app/modules/controlcenter/views'=>'@app/modules/controlcenter/themes/basic'],
             'baseUrl' => '@app/modules/controlcenter/themes/basic',
         ]);
-    }
-    
-    public function behaviors()
-    {
-    	return [
-    			'access' => [
-    					'class' => AccessControl::className(),
-    					'rules' => [
-    							[
-    									'allow' => true,
-    									'roles' => ['@'],
-    							],
-    					],
-    			]
-    	];
     }
 }

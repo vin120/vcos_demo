@@ -197,24 +197,6 @@ class Helper extends Controller
 		$date = $year[2].'/'.$year[1].'/'.$year[0].' '.$time[1];
 		return $date;
 	}
-	
-	//return 2015-12-14
-	public static function GetCreateNewTime($time){//时间格式转换
-		$year = explode('/', $time);
-		$date = $year[2].'-'.$year[1].'-'.$year[0];
-	
-		return $date;
-	}
-	
-	//return 09/05/2016
-	public static function GetNewDate($time){
-		$year = explode('-', $time);
-		$date = $year[2].'/'.$year[1].'/'.$year[0];
-		return $date;
-	}
-	
-
-	
 		
 	
 }

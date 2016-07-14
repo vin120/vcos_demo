@@ -33,14 +33,18 @@ $baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 				</h1>
 			</div>
 			<div class="r">
+				<?php if(!isset(Yii::$app->user->identity->id)) {?>
 				<a href="<?php echo Url::toRoute(['site/login'])?>">登录</a>|
-				<a href="<?php echo Url::toRoute(['register'])?>">注册</a>
+				<?php }else {?>
+				<a href="<?php echo Url::toRoute(['site/logout'])?>">退出</a>|
+				<?php }?>
+				<a href="<?php echo Url::toRoute(['/route/register'])?>">注册</a>
 			</div>
 			<nav id="mainNav" class="r">
 				<ul>
 					<li><a href="#">首页</a></li>
 					<li><a href="#">航线</a></li>
-					<li class="active"><a href="<?php echo Url::toRoute(['index']);?>">路线</a></li>
+					<li class="active"><a href="<?php echo Url::toRoute(['/route/index']);?>">路线</a></li>
 					<li><a href="#">价目表</a></li>
 					<li><a href="#">优惠</a></li>
 					<li><a href="#">客房</a></li>
