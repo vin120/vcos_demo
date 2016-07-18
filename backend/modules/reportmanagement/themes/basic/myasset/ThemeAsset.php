@@ -22,5 +22,6 @@ class ThemeAsset extends AssetBundle
     public $js = [
         'js/jquery-2.2.2.min.js',
         'js/public.js',
+    	'js/jqPaginator.js',
     ];
 }

@@ -52,11 +52,11 @@ $controller = Yii::$app->controller->id;
             <!-- 一级 -->
             <ul>
                 <li class="open">
-                    <a href="<?php echo Url::toRoute(['default/index']);?>"><img src="<?=$baseUrl ?>images/routeManage_icon.png"><?= \Yii::t('app', 'Report Manage') ?><i></i></a>
+                    <a href="#"><img src="<?=$baseUrl ?>images/routeManage_icon.png"><?= \Yii::t('app', 'Report Manage') ?><i></i></a>
                 </li>
                 <!-- 二级 -->
                 <ul>
-                    <li<?= $controller=='default'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['area/area']);?>"><?= \Yii::t('app', 'Boarding Report') ?></a></li>
+                    <li<?= $controller=='default'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['boarding/report']);?>"><?= \Yii::t('app', 'Boarding Report') ?></a></li>
                 </ul>
             </ul>
             <a href="#" id="closeAsideNav"><img src="<?=$baseUrl ?>images/asideNav_close.png"></a>

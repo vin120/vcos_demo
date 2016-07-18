@@ -106,7 +106,7 @@ $baseUrl = $this->assetBundles[MainAsset::className()]->baseUrl . '/';
 					<img src="<?=$baseUrl ?>img/4.png">
 					<span><?= \Yii::t('app', 'Scheduling') ?></span>
 				</a>
-				<a href="#" class='module disabled'>
+				<a href="<?= Url::toRoute('report/boarding/report') ?>" target="_blank" class='module'>
 					<img src="<?=$baseUrl ?>img/15.png">
 					<span><?= \Yii::t('app', 'Report') ?></span>
 				</a>
